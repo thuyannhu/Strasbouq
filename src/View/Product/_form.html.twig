@@ -1,0 +1,26 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ product.id }}" name="id" >
+	<input type="text" value="{{ product.name }}" name="name" id="name" placeholder="Nom">
+    <textarea name="description" rows="10" placeholder="Description"></textarea>
+    <input type="text" value="{{ product.price }}" name="price" id="price" placeholder="Prix">
+    <input type="text" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock">
+    <select name="color" id="color">
+        <option value="">Couleur</option>
+        <option value="rouge">rouge</option>
+        <option value="orange">orange</option>
+        <option value="jaune">jaune</option>
+        <option value="vert">vert</option>
+        <option value="bleu">bleu</option>
+        <option value="violet">violet</option>
+        <option value="blanc">blanc</option>
+    </select>
+
+    <select name="category" id="category">
+        <option value="">Catégorie</option>
+        <option value="bouquet">Bouquet</option>
+        <option value="fleur coupée">Fleur coupée</option>
+    </select>
+	<button>Ajouter</button>
+</form>
