@@ -1,0 +1,56 @@
+<nav>
+    <div class="nav-container">
+        <div id="nav-burger">
+            <div class="dropdown">
+                <button onclick="dropdownNav()" class="dropbtn">
+                  <i class="fas fa-bars"></i>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav-item">
+            <a href="#">Lien</a>
+        </ul>
+        <ul class="nav-item">
+            <a href="#">Lien</a>
+        </ul>
+        <ul class="nav-item">
+            <a href="#">Lien</a>
+        </ul>
+        <ul class="nav-item-logo">
+            <img
+                  src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                  class="me-2"
+                  height="20"
+                  alt="MDB Logo"
+                  loading="lazy"
+            />
+        </ul>
+        <ul class="nav-item">
+            <a href="#">Lien</a>
+        </ul>
+        <ul class="nav-item">
+            <a href="#">Lien</a>
+        </ul>
+        <ul id="nav-item-bag">
+            <div class="item-shop">
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<script type="text/javascript">
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function dropdownNav() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+</script>
