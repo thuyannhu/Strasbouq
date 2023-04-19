@@ -1,12 +1,30 @@
 {# TODO : manage errors display #}
 
-<form method="post">
-	<input type="hidden" value="{{ product.id }}" name="id" >
-	<input type="text" value="{{ product.name }}" name="name" id="name" placeholder="Nom">
-    <textarea name="description" rows="10" placeholder="Description"></textarea>
-    <input type="text" value="{{ product.price }}" name="price" id="price" placeholder="Prix">
-    <input type="text" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock">
-    <select name="color" id="color">
+<form method="post" enctype="multipart/form-data">
+	 <div class="form-row">
+    <input type="hidden" value="{{ product.id }}" name="id" >
+    <div class="form-group col-md-6">
+    <label for="name">Nom</label>
+	<input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" placeholder="Nom">
+    </div>
+    <div class="form-group col-md-6">
+    <label for="description">Description</label>
+    <textarea name="description" class="form-control" rows="10" placeholder="Description"></textarea>
+    </div>
+   <div class="custom-file">    
+    <input type="file" class="custom-file-input" name="image" id="customFileLang" lang="fr" />
+    <label class="custom-file-label" for="customFileLang">Ajouter une image</label>    
+    </div>
+    <div class="form-group col-md-6">
+    <label for="price">Prix</label>
+    <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix">
+    </div>
+    <div class="form-group col-md-6">
+    <label for="inventory">Stock</label>
+    <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock">
+    </div>
+    <div class="form-group col-md-6">
+    <select name="color" id="color" class="form-control">
         <option value="">Couleur</option>
         <option value="rouge">rouge</option>
         <option value="orange">orange</option>
@@ -16,11 +34,15 @@
         <option value="violet">violet</option>
         <option value="blanc">blanc</option>
     </select>
-
-    <select name="category" id="category">
+    </div>
+    <div class="form-group col-md-6">
+    <select name="category" id="category" class="form-control">
         <option value="">Catégorie</option>
         <option value="bouquet">Bouquet</option>
         <option value="fleur coupée">Fleur coupée</option>
     </select>
-	<button>Ajouter</button>
+    </div>
+    </div>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
+

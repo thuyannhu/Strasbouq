@@ -26,14 +26,32 @@ class ProductController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $authorizedExtensions = ['jpg','jpeg','png'];
+            $maxFileSize = 1000000;
 
-                // valider les données pour chaque champ
+            if (in_array($extension, $authorizedExtensions)) {
+                $errors = [];
+                $uploadDir = 'uploads/';
+                $uploadFile = $uploadDir . uniqid() . '.' . $extension;
 
-            $productManager = new ProductManager();
-            $id = $productManager->insert($product);
+                if ($_FILES['image']['size'] > $maxFileSize) {
+                    $errors[] = "Votre fichier doit faire moins de 2M !";
+                }
 
-            header('Location: /products/show?id=' . $id);
-            return null;
+                if (empty($errors)) {
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
+                    $productManager = new ProductManager();
+                    $id = $productManager->insert($product);
+                    header('Location: /products/show?id=' . $id);
+                }
+
+                if ($errors) {
+                    foreach ($errors as $error) {
+                        echo "<p>" . $error . "</p>";
+                    }
+                }
+            }
         }
         return $this->twig->render('Product/add.html.twig');
     }
