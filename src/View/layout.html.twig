@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/assets/images/favicon.png">
 
-    <title>{% block title %}contact{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Font Awesome -->
@@ -31,7 +31,9 @@
     {% include '/component/_navbar.html.twig' %}
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
+    {% block footer %}
     {% include '/component/_footer.html.twig' %}
+    {% endblock footer %}
 </body>
 </html>
 
