@@ -1,0 +1,13 @@
+.cardTitle {
+    font-size: 2rem;
+    margin-top: 5%;
+}
+
+.cartCard {
+    margin-left: 50%;
+}
+
+.cardPrice {
+    margin-top: 20%;
+    font-size: 1.5rem;
+}
