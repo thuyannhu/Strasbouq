@@ -7,7 +7,7 @@ use App\Model\ProductManager;
 class ProductController extends AbstractController
 {
     public function index(): string
-{
+    {
         $productManager = new ProductManager();
         $products = $productManager->selectAll('name');
 
@@ -15,7 +15,7 @@ class ProductController extends AbstractController
     }
 
     public function show(int $id): string
-{
+    {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
 
@@ -23,7 +23,7 @@ class ProductController extends AbstractController
     }
 
     public function add(): ?string
-{
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST); 
             $productManager = new ProductManager();
