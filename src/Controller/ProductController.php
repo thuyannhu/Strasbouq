@@ -26,12 +26,8 @@ class ProductController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
-
-                // valider les données pour chaque champ
-
             $productManager = new ProductManager();
             $id = $productManager->insert($product);
-
             header('Location: /products/show?id=' . $id);
             return null;
         }

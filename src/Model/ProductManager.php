@@ -28,7 +28,6 @@ class ProductManager extends AbstractManager
         $statement->bindValue('inventory', $product['inventory'], PDO::PARAM_INT);
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
-
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
