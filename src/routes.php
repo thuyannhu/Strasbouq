@@ -13,6 +13,11 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'contact' => ['ContactController', 'index',],
     'connecter' => ['ConnecterController','connect',],
+    'products' => ['ProductController', 'index',],
+    'products/edit' => ['ProductController', 'edit', ['id']],
+    'products/show' => ['ProductController', 'show', ['id']],
+    'products/add' => ['ProductController', 'add',],
+    'products/delete' => ['ProductController', 'delete',],
+    'contact' => ['ContactController', 'index',]
 ];
