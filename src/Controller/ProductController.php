@@ -25,23 +25,11 @@ class ProductController extends AbstractController
     public function add(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          $product = array_map('trim', $_POST);
-          $errors[]='';
-
-          if (empty($errors)) {           
+            $product = array_map('trim', $_POST); 
             $productManager = new ProductManager();
-            $id = $productManager->insert($product);                  
+            $id = $productManager->insert($product);
             header('Location: /products/show?id=' . $id);
             return null;
-           }
-
-           if ($errors) {
-            foreach ($errors as $error) {
-              echo "<p>" . $error . "</p>";
-              }
-           }
         }
- 
         return $this->twig->render('Product/add.html.twig');
     }
-
