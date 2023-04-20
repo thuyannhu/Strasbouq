@@ -1,0 +1,67 @@
+
+
+.bloc{
+    display: flex;
+    align-content: stretch;
+    justify-content: space-evenly;
+    width: 800px;
+    height: 800px;
+}
+
+.contactez-nous{
+margin-left: 50px;
+border: solid 2px black;
+border-radius: 20px;
+overflow: hidden;
+width: 600px;
+margin-top: 70px;
+margin-bottom: 150px;
+text-align: center;
+}
+
+.cont1{
+    border: solid 2px black;
+    border-radius: 20px;
+    height:270px; 
+    width: 340px;
+    margin-top:40px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.cont2{
+    border: solid 2px black;
+    border-radius: 20px;
+}
+
+h5{
+    text-align: center;
+    margin-top: 30px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.form-outline{
+    border: solid 1px black;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+.btn-block{
+    border-radius: 20px;
+    
+}
+
+.marginMail{
+    margin-top: 50%;
+}
+.uk-alert-success{
+    background-color: rgb(4, 250, 36);
+    padding-left: 5px;
+}
+.uk-alert-danger{
+    background-color: red;
+    padding-left: 5px;
+}
