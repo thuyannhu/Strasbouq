@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Product {{ product.title }}</h1>
     <p>{{ product.id }}.{{ product.name }}{{ product.category }}.{{ product.inventory }}{{ product.price }}.{{ product.name }}</p>
+
     <a href="/products/edit?id={{ product.id }}">Edit</a>
     <form action="/products/delete" method="POST">
         <input type="hidden" name="id" value="{{ product.id }}">

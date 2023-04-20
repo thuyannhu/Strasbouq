@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 ​
 --
+-- Table structure for table `images`
+--
+​
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `filename` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Products_idProducts` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Products_idProducts` (`Products_idProducts`),
+  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`Products_idProducts`) REFERENCES `products` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+​
+--
+-- Dumping data for table `images`
+--
+​
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+​
+--
 -- Table structure for table `order`
 --
 ​
@@ -147,11 +173,13 @@ CREATE TABLE `user` (
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `userName` varchar(45) NOT NULL,
   `userPassword` varchar(45) NOT NULL,
   `mail` varchar(100) NOT NULL,
   `fidelity` int NOT NULL,
   `isAdmin` tinyint(1) NOT NULL,
+  `zipcode` int NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -174,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 ​
--- Dump completed on 2023-04-17 17:31:23
+-- Dump completed on 2023-04-20 10:04:34

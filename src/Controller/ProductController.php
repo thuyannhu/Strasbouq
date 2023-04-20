@@ -25,34 +25,23 @@ class ProductController extends AbstractController
     public function add(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product = array_map('trim', $_POST);
-            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            $authorizedExtensions = ['jpg','jpeg','png'];
-            $maxFileSize = 1000000;
+          $product = array_map('trim', $_POST);
+          $errors[]='';
 
-            if (in_array($extension, $authorizedExtensions)) {
-                $errors = [];
-                $uploadDir = 'uploads/';
-                $uploadFile = $uploadDir . uniqid() . '.' . $extension;
+          if (empty($errors)) {           
+            $productManager = new ProductManager();
+            $id = $productManager->insert($product);                  
+            header('Location: /products/show?id=' . $id);
+            return null;
+           }
 
-                if ($_FILES['image']['size'] > $maxFileSize) {
-                    $errors[] = "Votre fichier doit faire moins de 2M !";
-                }
-
-                if (empty($errors)) {
-                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
-                    $productManager = new ProductManager();
-                    $id = $productManager->insert($product);
-                    header('Location: /products/show?id=' . $id);
-                }
-
-                if ($errors) {
-                    foreach ($errors as $error) {
-                        echo "<p>" . $error . "</p>";
-                    }
-                }
-            }
+           if ($errors) {
+            foreach ($errors as $error) {
+              echo "<p>" . $error . "</p>";
+              }
+           }
         }
+ 
         return $this->twig->render('Product/add.html.twig');
     }
-}
+
