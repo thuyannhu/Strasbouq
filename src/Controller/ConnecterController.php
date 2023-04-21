@@ -6,15 +6,18 @@ use App\Model\UserManager;
 
 class ConnecterController extends AbstractController
 {
-
-    private function traduireEntree($entree){
-        $tableau = ["name" => "Le nom", "firstname" => "Le prénom", "adresse" => "L' adresse",
-        "code" => "Le code postal", "ville" => "La ville", "telephone" => "Le numéro de téléphone",
-        "email" => "L' e-mail", "password" => "Le mot de passe"];
+    private function traduireEntree($entree)
+    {
+        $tableau = [
+            "name" => "Le nom", "firstname" => "Le prénom", "adresse" => "L' adresse",
+            "code" => "Le code postal", "ville" => "La ville", "telephone" => "Le numéro de téléphone",
+            "email" => "L' e-mail", "password" => "Le mot de passe"
+        ];
         return $tableau[$entree];
     }
 
-    private function verifierNumero($errors){
+    private function verifierNumero($errors)
+    {
         $userM = new UserManager();
         if (!$userM->phoneCheck($_POST['telephone'])) {
             $errors['telephone'] = "La syntaxe du numéro de téléphone est mauvaise.";
@@ -22,21 +25,24 @@ class ConnecterController extends AbstractController
         return $errors;
     }
 
-    private function verifierPasswords($errors){
+    private function verifierPasswords($errors)
+    {
         if ($_POST['confirm'] !== $_POST['password']) {
             $errors['confirm'] = "Les mots de passe ne correspondent pas.";
         }
         return $errors;
     }
 
-    private function verifierInformation($info, $errors){
+    private function verifierInformation($info, $errors)
+    {
         if (!isset($_POST[$info]) || trim($_POST[$info]) === '') {
             $errors[$info] = $this->traduireEntree($info) . " est obligatoire.";
         }
         return $errors;
     }
 
-    private function verificationGlobale(){
+    private function verificationGlobale()
+    {
         $errors = [];
         $errors = $this->verifierInformation('name', $errors);
         $errors = $this->verifierInformation('firstname', $errors);
@@ -51,30 +57,34 @@ class ConnecterController extends AbstractController
         return $errors;
     }
 
-    private function getPassword(){
+    private function getPassword()
+    {
         $username = $_POST["email"];
         $userManager = new UserManager();
         $userPassword = $userManager->searchUser($username, "userPassword");
         return $userPassword;
     }
 
-    private function isExistingUser($userPassword){
+    private function isExistingUser($userPassword)
+    {
         if (isset($userPassword[0]['userPassword'])) {
-            return True;
+            return true;
         } else {
-            return False;
+            return false;
         }
     }
 
-    private function isGoodPassword($userPassword){
+    private function isGoodPassword($userPassword)
+    {
         if ($_POST["password"] === $userPassword[0]['userPassword']) {
-            return True;
+            return true;
         } else {
-            return False;
+            return false;
         }
     }
 
-    private function connectAgent(){
+    private function connectAgent()
+    {
         $userPassword = $this->getPassword();
         if ($this->isExistingUser($userPassword)) {
             if ($this->isGoodPassword($userPassword)) {
@@ -91,15 +101,19 @@ class ConnecterController extends AbstractController
         return [$message, $alert];
     }
 
-    private function insertDataIntoDB(){
+    private function insertDataIntoDB()
+    {
         $userManager = new UserManager();
-        $userManager->insertUser(["firstname" => $_POST["firstname"],"lastname" => $_POST["name"],
-        "address" => $_POST["adresse"],"userPassword" => $_POST["password"],"mail" => $_POST["email"],
-        "fidelity" => 0 ,"isAdmin" => 0, "zipcode" => $_POST["code"],"city" => $_POST["ville"],
-        "phone" => $_POST["telephone"]]);
+        $userManager->insertUser([
+            "firstname" => $_POST["firstname"], "lastname" => $_POST["name"],
+            "address" => $_POST["adresse"], "userPassword" => $_POST["password"], "mail" => $_POST["email"],
+            "fidelity" => 0, "isAdmin" => 0, "zipcode" => $_POST["code"], "city" => $_POST["ville"],
+            "phone" => $_POST["telephone"]
+        ]);
     }
 
-    private function addErrorsToMessage($errors, $message){
+    private function addErrorsToMessage($errors, $message)
+    {
         foreach ($errors as $error) {
             array_push($message, $error);
         }
@@ -112,17 +126,13 @@ class ConnecterController extends AbstractController
         $alert = "";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (count($_POST) < 3) {
-
                 // Connexion compte existant
                 $resultConnexion = $this->connectAgent();
                 $message = $resultConnexion[0];
                 $alert = $resultConnexion[1];
-
             } else {
-
                 // Inscription
                 $errors = $this->verificationGlobale();
-
                 if (empty($errors)) {
                     $this->insertDataIntoDB();
                     $message = ["Bravo! Votre inscription a réussi."];
