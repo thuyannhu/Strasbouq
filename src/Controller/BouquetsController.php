@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Model\CatalogManager;
+
 class BouquetsController extends AbstractController
 {
     public function nosBouquets(): string
     {
-        return $this->twig->render('Bouquets/nosBouquets.html.twig');
+        $catalogManager = new CatalogManager();
+        $products = $catalogManager->showCatalogue();
+
+        return $this->twig->render('Bouquets/nosBouquets.html.twig', ['products' => $products]);
     }
 }
