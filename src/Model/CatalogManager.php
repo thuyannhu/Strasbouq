@@ -18,7 +18,8 @@ class CatalogManager extends AbstractManager
 
     public function showBouquet(): array
     {
-        $statement = $this->pdo->prepare("SELECT name, description, price FROM " . self::TABLE . " WHERE category = :category");
+        $statement = $this->pdo->prepare("SELECT name, description, price 
+        FROM " . self::TABLE . " WHERE category = :category");
         $statement->bindValue(':category', 'bouquet');
         $statement->execute();
         $productBouquet = $statement->fetchAll();
