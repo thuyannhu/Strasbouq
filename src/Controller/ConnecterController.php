@@ -69,7 +69,7 @@ class ConnecterController extends AbstractController
                     $userManager = new UserManager();
                     $userManager->insertUser(["firstname" => $_POST["firstname"],"lastname" => $_POST["name"],
                     "address" => $_POST["adresse"],"userPassword" => $_POST["password"],"mail" => $_POST["email"],
-                    "fidelity" => 0 ,"isAdmin" => 0, "zipcode" => $_POST["code"],"city" => $_POST["ville"], 
+                    "fidelity" => 0 ,"isAdmin" => 0, "zipcode" => $_POST["code"],"city" => $_POST["ville"],
                     "phone" => $_POST["telephone"]]);
                     $message = ["Bravo! Votre inscription a réussi."];
                     $alert = 'success';

@@ -36,7 +36,7 @@ class UserManager extends AbstractManager
      */
     public function modifyUser($categorie, $value, $userId)
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET " . $categorie . " = " . $value . 
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET " . $categorie . " = " . $value .
         " WHERE id = :userId");
         $statement->bindValue('userId', $userId, PDO::PARAM_STR);
 
