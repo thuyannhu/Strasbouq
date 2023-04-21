@@ -9,6 +9,28 @@
 <section>
   <div class="text-center container py-5">
     <h4 class="mt-4 mb-5"><strong>Nos Bouquets</strong></h4>
+     <form action="" method="post">
+        <div
+          class="row justify-content-center"
+          id="filter-sort-example-filters"
+          data-mdb-auto-filter="true"
+        >
+          <div class="my-5 filterBox">
+            <select class="form-control filter" id="filter-sort-select">
+              <option value="" disabled selected>Couleur</option>
+              <option value="rouge">rouge</option>
+              <option value="orange">orange</option>
+              <option value="jaune">jaune</option>
+              <option value="vert">vert</option>
+              <option value="bleu">bleu</option>
+              <option value="violet">violet</option>
+              <option value="blanc">blanc</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Trier</button>
+          </div>
+        </div>
+        <div class="row text-center" id="filter-sort-example-data"></div>
+     </form>
     <div class="row">
     {% for bouquet in bouquets %}
       <div class="col-lg-4 col-md-12 mb-4">

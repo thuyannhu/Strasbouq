@@ -16,3 +16,14 @@
     margin-top: 20%;
     font-size: 1.5rem;
 }
+
+.filterBox {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.filter {
+    text-align: center;
+}
