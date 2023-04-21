@@ -59,9 +59,9 @@ class UserManager extends AbstractManager
     /**
      * Delete a lot of users by their id
      */
-    public function bulkDelete(array $Ids)
+    public function bulkDelete(array $ids)
     {
-        foreach ($Ids as $id) {
+        foreach ($ids as $id) {
             $this->deleteUser($id);
         }
         return true;
