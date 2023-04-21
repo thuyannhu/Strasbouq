@@ -20,5 +20,6 @@ return [
     'products/show' => ['ProductController', 'show', ['id']],
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
-    'userpage' => ['UserpageController', 'userpage',]
+    'userpage' => ['UserpageController', 'userpage',],
+    'connecter' => ['ConnecterController','connect',],
 ];
