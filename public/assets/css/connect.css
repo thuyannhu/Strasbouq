@@ -59,9 +59,11 @@ main{
 }
 .uk-alert-success{
     background-color: rgb(4, 250, 36);
-    padding-left: 5px;
+    padding: 10px;
+    color: white;
 }
 .uk-alert-danger{
     background-color: red;
-    padding-left: 5px;
+    padding: 10px;
+    color: white;
 }

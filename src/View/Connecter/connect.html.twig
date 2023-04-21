@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/assets/css/connect.css">
 {% endblock %}
 
-
+{% block title %}Connexion{% endblock %}
 
 {% block content %}
 <main>
@@ -28,7 +28,10 @@
             {% if message is not empty %}
                 <div
                     class="uk-alert-{{alert}}">
-                    {{message}}
+                    {% for line in message %}
+                        {{ line }}
+                        <br>
+                    {% endfor %}
                 </div>
             {% endif %}
             <!-- Pills content -->
