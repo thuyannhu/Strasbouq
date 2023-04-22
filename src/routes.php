@@ -14,5 +14,11 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'contact' => ['ContactController', 'index',],
-    'devis' => ['DevisController', 'devis',]
+    'nosBouquets' => ['BouquetsController', 'nosBouquets',],
+    'products' => ['ProductController', 'index',],
+    'products/edit' => ['ProductController', 'edit', ['id']],
+    'products/show' => ['ProductController', 'show', ['id']],
+    'products/add' => ['ProductController', 'add',],
+    'products/delete' => ['ProductController', 'delete',],
+    'devis' => ['DevisController', 'devis',],
 ];
