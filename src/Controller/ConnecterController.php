@@ -130,6 +130,7 @@ class ConnecterController extends AbstractController
                 $resultConnexion = $this->connectAgent();
                 $message = $resultConnexion[0];
                 $alert = $resultConnexion[1];
+                $_SESSION['user'] = $_POST["email"];
             } else {
                 // Inscription
                 $errors = $this->verificationGlobale();
@@ -143,6 +144,7 @@ class ConnecterController extends AbstractController
                 }
             }
         }
-        return $this->twig->render('Connecter/connect.html.twig', ['message' => $message, 'alert' => $alert]);
+        return $this->twig->render('Connecter/connect.html.twig', ['message' => $message, 'alert' => $alert,
+        'user' => $_SESSION['user']]);
     }
 }
