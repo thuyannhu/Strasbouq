@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/bouquets.css">
+{% endblock %}
+{% block title %}Nos Bouquets{% endblock %}
+
+{% block content %}
+  {{ dump(bouquets) }}
+<section>
+  <div class="text-center container py-5">
+    <h4 class="mt-4 mb-5"><strong>Nos Bouquets</strong></h4>
+     <form action="" method="post">
+        <div
+          class="row justify-content-center"
+          id="filter-sort-example-filters"
+          data-mdb-auto-filter="true"
+        >
+          <div class="my-5 filterBox">
+            <select class="form-control filter" id="filter-sort-select">
+              <option value="" disabled selected>Couleur</option>
+              <option value="rouge">rouge</option>
+              <option value="orange">orange</option>
+              <option value="jaune">jaune</option>
+              <option value="vert">vert</option>
+              <option value="bleu">bleu</option>
+              <option value="violet">violet</option>
+              <option value="blanc">blanc</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Trier</button>
+          </div>
+        </div>
+        <div class="row text-center" id="filter-sort-example-data"></div>
+     </form>
+    <div class="row">
+    {% for bouquet in bouquets %}
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="../../../public/img/logo1.jpg"
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                  <h5><span class="badge bg-primary ms-2">Nouveauté</span></h5>
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="" class="text-reset">
+              <h5 class="card-title mb-3 cardTitle">{{bouquet.name}}</h5>
+            </a>
+            <h6 class="mb-3 cardPrice">{{bouquet.price}}€
+            <a href="#" class="cartCard">
+              <i class="fas fa-shopping-cart" ></i>
+            </a>
+            </h6>
+          </div>
+        </div>
+      </div>
+     {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+

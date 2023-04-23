@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
     <h1>{{ product.name }}</h1>
         <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
@@ -40,6 +41,7 @@
             </tr>
              </tbody>
                 <a href="/products/edit?id={{ product.id }}">Edit</a>
+
     <form action="/products/delete" method="POST">
         <input type="hidden" name="id" value="{{ product.id }}">
         <button>Delete</button>
