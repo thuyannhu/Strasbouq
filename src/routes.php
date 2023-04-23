@@ -20,4 +20,5 @@ return [
     'products/show' => ['ProductController', 'show', ['id']],
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
+    'devis' => ['DevisController', 'devis',],
 ];
