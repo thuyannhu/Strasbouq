@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Service\Image;
+use App\Model\ImageManager;
+use App\Controller\ImageController;
 
 class ProductController extends AbstractController
 {
-    public function index(): string
+public function index(): string
     {
         $productManager = new ProductManager();
         $products = $productManager->selectAll('name');
@@ -14,7 +17,7 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/index.html.twig', ['products' => $products]);
     }
 
-    public function show(int $id): string
+public function show(int $id): string
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
@@ -22,37 +25,25 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
 
-    public function add(): ?string
+public function add(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product = array_map('trim', $_POST);
-            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            $authorizedExtensions = ['jpg','jpeg','png'];
-            $maxFileSize = 1000000;
+            $product = array_map('trim', $_POST); 
+            $productManager = new ProductManager();
+            $id = $productManager->insert($product);
 
-            if (in_array($extension, $authorizedExtensions)) {
-                $errors = [];
-                $uploadDir = 'uploads/';
-                $uploadFile = $uploadDir . uniqid() . '.' . $extension;
-
-                if ($_FILES['image']['size'] > $maxFileSize) {
-                    $errors[] = "Votre fichier doit faire moins de 2M !";
-                }
-
-                if (empty($errors)) {
-                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
-                    $productManager = new ProductManager();
-                    $id = $productManager->insert($product);
-                    header('Location: /products/show?id=' . $id);
-                }
-
-                if ($errors) {
-                    foreach ($errors as $error) {
-                        echo "<p>" . $error . "</p>";
-                    }
-                }
-            }
+            $image = new ImageController();
+            $image->addImage($_FILES, $id);                        
+            header('Location: /products/show?id=' . $id);
+            return null;
         }
         return $this->twig->render('Product/add.html.twig');
     }
+
 }
+
+// if ($errors) {
+//     foreach ($errors as $error) {
+//         echo "<p>" . $error . "</p>";
+//     }
+// }
