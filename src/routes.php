@@ -22,4 +22,5 @@ return [
     'products/delete' => ['ProductController', 'delete',],
     'userpage' => ['UserpageController', 'userpage',],
     'connecter' => ['ConnecterController','connect',],
+    'devis' => ['DevisController', 'devis',],
 ];
