@@ -2,9 +2,9 @@
 
 namespace App\Service;
 
-class Image {
-
-    public function upload(array $file)
+class Image
+{
+    public function upload()
     {
         $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
         $uploadDir = 'assets/img/products/';
