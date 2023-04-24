@@ -5,6 +5,7 @@
         <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
+        <th>Image</th>
         <th>Id</th>
         <th>Nom</th>
         <th>Catégorie</th>
@@ -17,6 +18,16 @@
   <tbody>
 <tr>
               <a href="/products/show?id={{ product.id }}">
+               <td>
+        <div class="d-flex align-items-center">
+           <img
+              src="64468e45c6f82.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+        </div>
+      </td>
                 <td class="fw-normal mb-1">{{ product.id }}</td>
                 <td class="fw-normal mb-1">{{ product.name }}</td>
                 <td class="fw-normal mb-1">{{ product.category }}</td>
@@ -45,7 +56,7 @@
         <button>Delete</button>
     </form>
     <a href="/products">Back</a>
-    
+    {{ dump (image.filename)}}
 {% endblock %}
 {% block footer %}
     {% endblock footer %}

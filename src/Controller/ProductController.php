@@ -22,7 +22,12 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
 
-        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
+        $imageManager = new ProductManager();
+        $productImage = $productManager->selectOneByIdByImages($id);
+
+        return $this->twig->render('Product/show.html.twig', ['product' => $product, 'image' => $productImage]);
+
+
     }
 
     public function add(): ?string
@@ -38,6 +43,28 @@ class ProductController extends AbstractController
             return null;
         }
         return $this->twig->render('Product/add.html.twig');
+    }
+    public function edit(int $id): ?string
+    {
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $item = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $productManager->update($item);
+
+            header('Location: /products/show?id=' . $id);
+
+            return null;
+        }
+
+        return $this->twig->render('product/edit.html.twig', [
+            'product' => $product,
+        ]);
     }
 }
 
