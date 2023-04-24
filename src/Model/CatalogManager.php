@@ -26,9 +26,8 @@ class CatalogManager extends AbstractManager
         return $productBouquet;
     }
 
-    public function filterColor(): array
+    public function filterColor($color): array
     {
-        $color = $_POST['color'];
         $statement = $this->pdo->prepare("SELECT name, description, price 
         FROM " . self::TABLE . " WHERE color = :color");
         $statement->bindValue(':color', $color);

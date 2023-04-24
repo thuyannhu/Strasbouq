@@ -8,9 +8,10 @@ class BouquetsController extends AbstractController
 {
     public function filterBouquet()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $catalogManager = new CatalogManager();
-            $resultFilter = $catalogManager->filterColor();
+            $color = $_POST['color'];
+            $resultFilter = $catalogManager->filterColor($color);
             return $resultFilter;
         } else {
             return [];
