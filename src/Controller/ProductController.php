@@ -13,7 +13,6 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $productImage = $productManager->selectAllImages('products.id');
-    
         return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
     }
 
