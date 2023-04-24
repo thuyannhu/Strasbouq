@@ -8,10 +8,21 @@ class ProductManager extends AbstractManager
 {
     public const TABLE = 'products';
 
+    public function selectAllImages(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = "SELECT * FROM " . static::TABLE . " LEFT JOIN 
+        images ON products.id=images.Products_idProducts";
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+        return $this->pdo->query($query)->fetchAll();
+    }
+
     public function selectOneByIdByImages(int $id): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " INNER JOIN images ON products.id=images.Products_idProducts WHERE products.id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " INNER JOIN 
+        images ON products.id=images.Products_idProducts WHERE products.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

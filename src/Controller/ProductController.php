@@ -12,22 +12,18 @@ class ProductController extends AbstractController
     public function index(): string
     {
         $productManager = new ProductManager();
-        $products = $productManager->selectAll('name');
-
-        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
+        $productImage = $productManager->selectAllImages('products.id');
+    
+        return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
     }
 
     public function show(int $id): string
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
-
-        $imageManager = new ProductManager();
         $productImage = $productManager->selectOneByIdByImages($id);
 
         return $this->twig->render('Product/show.html.twig', ['product' => $product, 'image' => $productImage]);
-
-
     }
 
     public function add(): ?string
