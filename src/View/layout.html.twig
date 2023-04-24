@@ -30,7 +30,11 @@
 <body>
     {% include '/component/_navbar.html.twig' %}
     {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+    {% block javascript %}
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    {% endblock %}
     {% block footer %}
     {% include '/component/_footer.html.twig' %}
     {% endblock footer %}
