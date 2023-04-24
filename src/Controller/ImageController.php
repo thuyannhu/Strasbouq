@@ -44,6 +44,6 @@ class ImageController extends AbstractController
                 header('Location:/products/show?id=' . $id);
                 return null;
             }
-        } return $this->twig->render('Product/show.html.twig', ['image' => $newImage]);
+        } return $this->twig->render('Product/add.html.twig', ['errors' => $errors]);
     }
 }
