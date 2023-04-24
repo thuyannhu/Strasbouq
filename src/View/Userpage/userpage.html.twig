@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/username/css/user.css">
+{% endblock %}
+{% block title %}Utilisateur{% endblock %}
+
+
+{% block content %}
+    <h1>Clients</h1>
+
+    <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>Télephone</th>
+            <th>Email</th>
+            <th>Fidélité</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in data %}
+            <tr>
+                <th>{{ user['id'] }}</th>
+                <th>{{ user['lastname'] }}</th>
+                <th>{{ user['firstname'] }}</th>
+                <th>{{ user['address'] }}</th>
+                <th>{{ user['zipcode'] }}</th>
+                <th>{{ user['city'] }}</th>
+                <th>{{ user['phone'] }}</th>
+                <th>{{ user['mail'] }}</th>
+                <th>{{ user['fidelity'] }}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
+
+{% block footer %}{% endblock footer %}
