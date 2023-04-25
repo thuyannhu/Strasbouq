@@ -17,7 +17,8 @@
         <th>Inventaire</th>
         <th>Niveau de stock</th>
         <th>Prix</th>
-        <th>Modifier</th>
+        <th></th>
+        <th></th>
     </tr>
   </thead>
   <tbody>
@@ -48,11 +49,19 @@
                 {% endif %}
                 <td class="fw-normal mb-1">{{ image.price }}€</td>
                 <td>
-                <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >Edit</button></td>
+                    <a href="/products/edit?id={{ image.id }}">
+                    <button type="button" class="btn btn-primary btn-floating">
+                    <i class="fas fa-pencil"></i>
+                    </button>
+                    </a>
+                 </td>
+                 <td>
+                 <a href="">
+                    <button type="button" class="btn btn-primary btn-floating">
+                    <i class="fas fa-trash-can"></i>
+                    </button>
+                    </a>
+                </td>
             </tr>
             </tbody>
     {% else %}
@@ -60,7 +69,6 @@
         {% endfor %}
     </ul>
     <a href="/products/add">Ajouter</a>
-        {{ dump (image)}}
 
 {% endblock %}
 
