@@ -24,16 +24,6 @@
     {% for product in products %}
               <tr>
               <a href="/products/show?id={{ product.id }}">
-                <td>
-                    <div class="d-flex align-items-center">
-                    <img
-                        src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                        alt=""
-                        style="width: 45px; height: 45px"
-                        class="rounded-circle"
-                        />
-                    </div>
-                </td
                 <td class="fw-normal mb-1">{{ product.id }}</td>
                 <td class="fw-normal mb-1">{{ product.name }}</td>
                 <td class="fw-normal mb-1">{{ product.category }}</td>
@@ -47,7 +37,7 @@
                 {% if product.inventory == 0 %}
                     <td><span class="badge badge-warning rounded-pill d-inline">Rupture</span></td>
                 {% endif %}
-                <td class="fw-normal mb-1">{{ product.price }}</td>
+                <td class="fw-normal mb-1">{{ product.price }}€</td>
                 <td>
                 <button
                 type="button"
@@ -55,9 +45,13 @@
                 data-mdb-ripple-color="dark"
                 >Edit</button></td>
             </tr>
+            </tbody>
     {% else %}
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
     <a href="/products/add">Ajouter</a>
 {% endblock %}
+
+   {% block footer %}
+    {% endblock footer %}
