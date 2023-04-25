@@ -72,14 +72,13 @@ class ProductManager extends AbstractManager
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
 
         return $statement->execute();
-
     }
 
     public function deleteProducts(int $id): void
     {
         $statement = $this->pdo->prepare("DELETE products FROM " . static::TABLE . " INNER JOIN 
         images ON products.id=images.Products_idProducts WHERE products.id=:id");
-        
+
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
 
         $statement->execute();

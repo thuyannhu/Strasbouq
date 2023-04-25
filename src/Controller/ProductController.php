@@ -14,12 +14,12 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $productImage = $productManager->selectAllImages('images.Products_idProducts');
         var_dump($_POST);
-        
+
         return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
     }
 
     public function show(int $id): string
-    {   
+    {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
         $productImage = $productManager->selectOneByIdByImages($id);
@@ -42,11 +42,10 @@ class ProductController extends AbstractController
     }
     public function edit(int $id): ?string
     {
-        
         $productManager = new ProductManager();
-        $product = $productManager->selectOneById($id);
+        $product = $productManager->selectOneByIdByImages($id);
 
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
 
@@ -66,7 +65,7 @@ class ProductController extends AbstractController
     }
 
     public function delete(): void
-    {   
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $productManager = new ProductManager();
@@ -74,6 +73,4 @@ class ProductController extends AbstractController
             header('Location:/products');
         }
     }
-
-    
 }
