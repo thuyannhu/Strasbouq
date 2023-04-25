@@ -34,33 +34,34 @@
                     ;>
                 </div>
                 </td>
-                <td class="fw-normal mb-1">{{ image.id }}</td>
+                <td class="fw-normal mb-1">{{ image.Products_idProducts }}</td>
                 <td class="fw-normal mb-1">{{ image.name }}</td>
                 <td class="fw-normal mb-1">{{ image.category }}</td>
                 <td class="fw-normal mb-1">{{ image.inventory }}</td>
-                {% if product.inventory > 5 %}
+                {% if image.inventory > 5 %}
                     <td><span class="badge badge-success rounded-pill d-inline">En stock</span></td>
                 {% endif %}
-                {% if product.inventory > 0 and image.inventory <= 5 %}
+                {% if image.inventory > 0 and image.inventory <= 5 %}
                     <td><span class="badge badge-primary rounded-pill d-inline">Stock bas</span></td>
                 {% endif %}
-                {% if product.inventory == 0 %}
+                {% if image.inventory == 0 %}
                     <td><span class="badge badge-warning rounded-pill d-inline">Rupture</span></td>
                 {% endif %}
                 <td class="fw-normal mb-1">{{ image.price }}€</td>
                 <td>
-                    <a href="/products/edit?id={{ image.id }}">
+                    <a href="/products/edit?id={{ image.Products_idProducts }}">
                     <button type="button" class="btn btn-primary btn-floating">
                     <i class="fas fa-pencil"></i>
                     </button>
                     </a>
                  </td>
                  <td>
-                 <a href="">
-                    <button type="button" class="btn btn-primary btn-floating">
+                 <form action="/products/delete" method="POST">
+                    <input type="hidden" name="id" value="{{ image.Products_idProducts }}">
+                    <button type="submit" class="btn btn-primary btn-floating">
                     <i class="fas fa-trash-can"></i>
                     </button>
-                    </a>
+                </form>
                 </td>
             </tr>
             </tbody>
@@ -69,7 +70,6 @@
         {% endfor %}
     </ul>
     <a href="/products/add">Ajouter</a>
-
 {% endblock %}
 
    {% block footer %}
