@@ -5,9 +5,18 @@
 {% endblock navbar %}
 
 {% block content %}
-    <h1>Edit product {{ product.name }}</h1>
+    <h1>Modifier {{ product.name }}</h1>
+    <p>Images du produit<p>
+    <div class="d-flex align-items-center">
+           <img
+              src="\{{product.filename}}"
+              alt=""
+              style="width: auto; height: 200px"
+              ;>
+    </div></br>
     {% include 'product/_form.html.twig' %}
-    <a href="/products/show?id={{ product.id }}">Back</a>
+    
+    <a href="/products/show?id={{ product.id}}">Back</a>
 {% endblock %}
 
 {% block footer %}{% endblock footer %}
