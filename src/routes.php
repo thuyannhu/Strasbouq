@@ -24,4 +24,5 @@ return [
     'connecter' => ['ConnecterController','connect',],
     'devis' => ['DevisController', 'devis',],
     'cart' => ['CartController', 'cart',],
+    'cart/clearCart' => ['CartController', 'clearCart',],
 ];

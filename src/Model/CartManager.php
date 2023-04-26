@@ -13,4 +13,8 @@ class CartManager extends AbstractManager
     public function showCart()
     {
     }
+
+    public function addToCart()
+    {
+    }
 }
