@@ -12,17 +12,17 @@ class ProductController extends AbstractController
     public function index(): string
     {
         $productManager = new ProductManager();
-        $products = $productManager->selectAll('name');
-
-        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
+        $productImage = $productManager->selectAllImages('products.id');
+        return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
     }
 
     public function show(int $id): string
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
+        $productImage = $productManager->selectOneByIdByImages($id);
 
-        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $product, 'image' => $productImage]);
     }
 
     public function add(): ?string
@@ -38,6 +38,28 @@ class ProductController extends AbstractController
             return null;
         }
         return $this->twig->render('Product/add.html.twig');
+    }
+    public function edit(int $id): ?string
+    {
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $item = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $productManager->update($item);
+
+            header('Location: /products/show?id=' . $id);
+
+            return null;
+        }
+
+        return $this->twig->render('product/edit.html.twig', [
+            'product' => $product,
+        ]);
     }
 }
 
