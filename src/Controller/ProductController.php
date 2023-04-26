@@ -12,7 +12,8 @@ class ProductController extends AbstractController
     public function index(): string
     {
         $productManager = new ProductManager();
-        $productImage = $productManager->selectAllImages('products.id');
+        $productImage = $productManager->selectAllImages('images.Products_idProducts');
+
         return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
     }
 
@@ -21,7 +22,6 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
         $productImage = $productManager->selectOneByIdByImages($id);
-
         return $this->twig->render('Product/show.html.twig', ['product' => $product, 'image' => $productImage]);
     }
 
@@ -42,15 +42,16 @@ class ProductController extends AbstractController
     public function edit(int $id): ?string
     {
         $productManager = new ProductManager();
-        $product = $productManager->selectOneById($id);
+        $product = $productManager->selectOneByIdByImages($id);
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $item = array_map('trim', $_POST);
+            $product = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
 
             // if validation is ok, update and redirection
-            $productManager->update($item);
+            $productManager->update($product);
 
             header('Location: /products/show?id=' . $id);
 
@@ -58,13 +59,17 @@ class ProductController extends AbstractController
         }
 
         return $this->twig->render('product/edit.html.twig', [
-            'product' => $product,
+            'product' => $product
         ]);
     }
-}
 
-// if ($errors) {
-//     foreach ($errors as $error) {
-//         echo "<p>" . $error . "</p>";
-//     }
-// }
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $productManager = new ProductManager();
+            $productManager->deleteProducts((int)$id);
+            header('Location:/products');
+        }
+    }
+}

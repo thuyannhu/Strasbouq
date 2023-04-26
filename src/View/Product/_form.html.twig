@@ -9,7 +9,7 @@
     </div>
     <div class="form-group col-md-6">
     <label for="description">Description</label>
-    <textarea name="description" class="form-control" rows="10" placeholder="Description"></textarea>
+    <textarea name="description" class="form-control" rows="10" placeholder="Description" value="{{ product.description }}"></textarea>
     </div>
    <div class="custom-file">    
     <input type="file" class="custom-file-input" value="{{ product.image }}" name="image" id="imageUpload"/>
@@ -24,7 +24,7 @@
     <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock">
     </div>
     <div class="form-group col-md-6">
-    <select name="color" id="color" class="form-control">
+    <select name="color" id="color" class="form-control" value="{{ product.color }}">
         <option value="">Couleur</option>
         <option value="rouge">rouge</option>
         <option value="orange">orange</option>
@@ -37,7 +37,7 @@
     </select>
     </div>
     <div class="form-group col-md-6">
-    <select name="category" id="category" class="form-control">
+    <select name="category" id="category" class="form-control " value="{{ product.category }}">
         <option value="">Catégorie</option>
         <option value="bouquet">Bouquet</option>
         <option value="fleur coupée">Fleur coupée</option>
