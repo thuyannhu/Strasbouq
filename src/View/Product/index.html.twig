@@ -10,6 +10,7 @@
     <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
+        <th>Image</th>
         <th>Id</th>
         <th>Nom</th>
         <th>Catégorie</th>
@@ -21,33 +22,31 @@
   </thead>
   <tbody>
     <tr>
-    {% for product in products %}
+    {% for image in images %}
               <tr>
-              <a href="/products/show?id={{ product.id }}">
-                <td>
-                    <div class="d-flex align-items-center">
+              <td>
+                <div class="d-flex align-items-center">
                     <img
-                        src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                        alt=""
-                        style="width: 45px; height: 45px"
-                        class="rounded-circle"
-                        />
-                    </div>
-                </td
-                <td class="fw-normal mb-1">{{ product.id }}</td>
-                <td class="fw-normal mb-1">{{ product.name }}</td>
-                <td class="fw-normal mb-1">{{ product.category }}</td>
-                <td class="fw-normal mb-1">{{ product.inventory }}</td>
+                    src="\{{ image.filename }}"
+                    alt=""
+                    style="width: auto; height: 200px"
+                    ;>
+                </div>
+                </td>
+                <td class="fw-normal mb-1">{{ image.id }}</td>
+                <td class="fw-normal mb-1">{{ image.name }}</td>
+                <td class="fw-normal mb-1">{{ image.category }}</td>
+                <td class="fw-normal mb-1">{{ image.inventory }}</td>
                 {% if product.inventory > 5 %}
                     <td><span class="badge badge-success rounded-pill d-inline">En stock</span></td>
                 {% endif %}
-                {% if product.inventory > 0 and product.inventory <= 5 %}
+                {% if product.inventory > 0 and image.inventory <= 5 %}
                     <td><span class="badge badge-primary rounded-pill d-inline">Stock bas</span></td>
                 {% endif %}
                 {% if product.inventory == 0 %}
                     <td><span class="badge badge-warning rounded-pill d-inline">Rupture</span></td>
                 {% endif %}
-                <td class="fw-normal mb-1">{{ product.price }}</td>
+                <td class="fw-normal mb-1">{{ image.price }}€</td>
                 <td>
                 <button
                 type="button"
@@ -55,9 +54,15 @@
                 data-mdb-ripple-color="dark"
                 >Edit</button></td>
             </tr>
+            </tbody>
     {% else %}
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
     <a href="/products/add">Ajouter</a>
+        {{ dump (image)}}
+
 {% endblock %}
+
+   {% block footer %}
+    {% endblock footer %}
