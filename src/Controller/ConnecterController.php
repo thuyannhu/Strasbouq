@@ -131,6 +131,8 @@ class ConnecterController extends AbstractController
                 $message = $resultConnexion[0];
                 $alert = $resultConnexion[1];
                 $_SESSION['user'] = $_POST["email"];
+                header('Location: /');
+                exit;
             } else {
                 // Inscription
                 $errors = $this->verificationGlobale();
