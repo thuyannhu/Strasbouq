@@ -44,7 +44,6 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdByImages($id);
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
 
@@ -52,7 +51,6 @@ class ProductController extends AbstractController
 
             // if validation is ok, update and redirection
             $productManager->update($product);
-
             header('Location: /products/show?id=' . $id);
 
             return null;
