@@ -22,7 +22,7 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         // $product = $productManager->selectOneById($id);
         $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/show.html.twig', ['product'=> $productImage]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $productImage]);
     }
 
     public function add(): ?string
