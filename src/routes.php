@@ -24,4 +24,5 @@ return [
     'connecter' => ['ConnecterController','connect',],
     'devis' => ['DevisController', 'devis',],
     'admin' => ['AdminController', 'admin',],
+    'monCompte' => ['CompteController', 'moncompte',],
 ];
