@@ -20,9 +20,15 @@ class ProductController extends AbstractController
     public function show(int $id): string
     {
         $productManager = new ProductManager();
-        // $product = $productManager->selectOneById($id);
         $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/show.html.twig', ['product'=> $productImage]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $productImage]);
+    }
+
+    public function showsheet(int $id): string
+    {
+        $productManager = new ProductManager();
+        $productImage = $productManager->selectOneByIdByImages($id);
+        return $this->twig->render('Product/showsheet.html.twig', ['product' => $productImage]);
     }
 
     public function add(): ?string
