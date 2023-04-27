@@ -20,9 +20,9 @@ class ProductController extends AbstractController
     public function show(int $id): string
     {
         $productManager = new ProductManager();
-        $product = $productManager->selectOneById($id);
+        // $product = $productManager->selectOneById($id);
         $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/show.html.twig', ['product' => $product, 'image' => $productImage]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $productImage]);
     }
 
     public function add(): ?string
@@ -44,7 +44,6 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdByImages($id);
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
 
@@ -52,7 +51,6 @@ class ProductController extends AbstractController
 
             // if validation is ok, update and redirection
             $productManager->update($product);
-
             header('Location: /products/show?id=' . $id);
 
             return null;
