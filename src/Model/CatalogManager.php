@@ -16,13 +16,23 @@ class CatalogManager extends AbstractManager
         return $productCatalog;
     }
 
-    public function showBouquet(): array
+    // public function showBouquet(): array
+    // {
+    //     $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category = :category");
+    //     $statement->bindValue(':category', 'bouquet');
+    //     $statement->execute();
+    //     $productBouquet = $statement->fetchAll();
+    //     return $productBouquet;
+    // }
+
+    public function selectProducts(): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category = :category");
-        $statement->bindValue(':category', 'bouquet');
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        LEFT JOIN images ON products.id=images.Products_idProducts 
+        WHERE category = 'bouquet'");
         $statement->execute();
-        $productBouquet = $statement->fetchAll();
-        return $productBouquet;
+        $allBouquets = $statement->fetchAll();
+        return $allBouquets;
     }
 
     public function filterBouquetColor($color): array

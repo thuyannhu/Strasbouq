@@ -53,7 +53,7 @@ class BouquetsController extends AbstractController
         if ($resultFilter) {
             $bouquets = $resultFilter;
         } else {
-            $bouquets = $catalogManager->showBouquet();
+            $bouquets = $catalogManager->selectProducts();
         }
 
         if (isset($_GET['add_to_cart'])) {
