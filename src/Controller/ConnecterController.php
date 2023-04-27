@@ -140,6 +140,8 @@ class ConnecterController extends AbstractController
                     $this->insertDataIntoDB();
                     $message = ["Bravo! Votre inscription a réussi."];
                     $alert = 'success';
+                    header('Location: /monCompte');
+                    exit;
                 } else {
                     $message = $this->addErrorsToMessage($errors, $message);
                     $alert = 'danger';

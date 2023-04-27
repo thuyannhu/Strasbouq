@@ -28,5 +28,12 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
+.link{
+    text-decoration: none;
+    color: aliceblue;
+}
+.btn-red{
+    background-color: rgb(162, 11, 11) !important;
+}
 
 

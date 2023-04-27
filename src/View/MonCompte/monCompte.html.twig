@@ -5,39 +5,43 @@
 {% endblock %}
 {% block title %}Mon Compte{% endblock %}
 {% block content %}
+
 <div class="center">
     <div class="contenaire">
         <div class="box">
 
-            <a href="#">
             <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" />
-            <label class="btn btn-primary" for="btn-check">Mes coordonnées</label>
-            </a>
-            <a href="#">
-            <input type="checkbox" class="btn-check" id="btn-check2" checked autocomplete="off" />
-            <label class="btn btn-primary" for="btn-check2">Mes Commandes</label>
-            </a>     
-            <a href="#">
-            <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" />
-            <label class="btn btn-primary" for="btn-check3">Nous contacter</label>
-            </a>
+            <label class="btn btn-primary" for="btn-check"><a class="link" href="/monCompte">Mes coordonnées</a></label>
 
+            
+            <input type="checkbox" class="btn-check" id="btn-check2" checked autocomplete="off" />
+            <label class="btn btn-primary" for="btn-check2"><a class="link" href="#">Mes Commandes</a></label>
+
+            
+            <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" />
+            <label class="btn btn-primary" for="btn-check3"><a class="link" href="/contact">Nous contacter</a></label>
+
+            {% if (data["isAdmin"]) > 0 %}
+            <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" />
+            <label class="btn btn-primary" for="btn-check3"><a class="link" href="/userpage">Accès admin</a></label>
+ 
+            {% endif %}
         </div>
 
         <div>
-            <form>
+            <form method="POST" >
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
                     <input type="text" id="form6Example1" class="form-control" />
-                    <label class="form-label" for="form6Example1">First name</label>
+                    <label class="form-label" for="form6Example1">{{data["firstname"]}}</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
                     <input type="text" id="form6Example2" class="form-control" />
-                    <label class="form-label" for="form6Example2">Last name</label>
+                    <label class="form-label" for="form6Example2">{{data["lastname"]}}</label>
                     </div>
                 </div>
                 </div>
@@ -45,35 +49,48 @@
                 <!-- Text input -->
                 <div class="form-outline mb-4">
                 <input type="text" id="form6Example3" class="form-control" />
-                <label class="form-label" for="form6Example3">Company name</label>
+                <label class="form-label" for="form6Example3">{{data["address"]}}</label>
                 </div>
-            
-                <!-- Text input -->
-                <div class="form-outline mb-4">
-                <input type="text" id="form6Example4" class="form-control" />
-                <label class="form-label" for="form6Example4">Address</label>
-                </div>
+                
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                        <input type="text" id="form6Example1" class="form-control" />
+                        <label class="form-label" for="form6Example1">{{data["zipcode"]}}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                        <input type="text" id="form6Example2" class="form-control" />
+                        <label class="form-label" for="form6Example2">{{data["city"]}}</label>
+                        </div>
+                    </div>
+                    </div>
+
             
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                 <input type="email" id="form6Example5" class="form-control" />
-                <label class="form-label" for="form6Example5">Email</label>
+                <label class="form-label" for="form6Example5">{{data["mail"]}}</label>
                 </div>
             
                 <!-- Number input -->
                 <div class="form-outline mb-4">
                 <input type="number" id="form6Example6" class="form-control" />
-                <label class="form-label" for="form6Example6">Phone</label>
+                <label class="form-label" for="form6Example6">{{data["phone"]}}</label>
                 </div>
             
-                <!-- Message input -->
+                <!-- Number input -->
                 <div class="form-outline mb-4">
-                <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                <label class="form-label" for="form6Example7">Additional information</label>
+                <input type="number" id="form6Example6" class="form-control" />
+                <label class="form-label" for="form6Example6">{{data["fidelity"] ~ " pts de fidélité"}}</label>
                 </div>
             
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">Rectifier</button>
+            </form>
+            <form method="POST">
+                <button type="submit" class="btn btn-primary btn-block mb-4 btn-red">Se déconnecter</button>
             </form>
         </div>   
     </div>
