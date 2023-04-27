@@ -15,7 +15,7 @@ class CartController extends AbstractController
     public function cart(): string
     {
         if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = []; // initialiser un panier vide
+            $_SESSION['cart'] = [];
         }
 
         return $this->twig->render('Cart/cart.html.twig', ['cart' => $_SESSION['cart']]);
