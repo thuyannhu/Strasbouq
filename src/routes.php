@@ -25,4 +25,6 @@ return [
     'devis' => ['DevisController', 'devis',],
     'admin' => ['AdminController', 'admin',],
     'monCompte' => ['CompteController', 'moncompte',],
+    'cart' => ['CartController', 'cart',],
+    'cart/clearCart' => ['CartController', 'clearCart',],
 ];

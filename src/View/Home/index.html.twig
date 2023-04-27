@@ -1,6 +1,34 @@
 {% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+    {% block stylesheet %}
+        <link rel="stylesheet" href="/assets/css/homepage.css">
 {% endblock %}
+{% block content %}
+          <!-- Full Page Intro -->
+          <div class="view" style="background-image: url('https://images.pexels.com/photos/4270172/pexels-photo-4270172.jpeg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-black-light align-items-center home-flex">
+              <!-- Content --> 
+              
+              <div class="container">
+                <!--Grid row-->
+                <div class="row">
+                  <!--Grid column-->
+                 
+                  <div class="col-md-12 mb-4 white-text text-center">
+                  
+                    <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Strasbouq</strong></h1>
+                    <h2 class="text- mb-4 white-text">Votre fleuriste au Neudorf</h2>
+                    <a class="btn btn-outline-white mx-4">Nos bouquets</a>
+                    <a class="btn btn-outline-white mx-4">Composez votre bouquet</a>
+                    </div>
+                  </div>
+                  </div>
+                  <!--Grid column-->
+                </div>
+                <!--Grid row-->
+              </div>
+              <section class="mt-5 mx-4">
+              <h3>Nos bouquets du moment</h3>
+              </section>
+{% endblock %}
+
