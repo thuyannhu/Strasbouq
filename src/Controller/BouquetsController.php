@@ -11,7 +11,7 @@ class BouquetsController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $catalogManager = new CatalogManager();
             $color = $_POST['color'];
-            $resultFilter = $catalogManager->filterColor($color);
+            $resultFilter = $catalogManager->filterBouquetColor($color);
             return $resultFilter;
         } else {
             return [];
@@ -26,6 +26,7 @@ class BouquetsController extends AbstractController
             $product = $catalogManager->getProductById($id);
             if ($product) {
                 $name = $product['name'];
+                $category = $product['category'];
                 $price = $product['price'];
                 if (isset($_SESSION['cart'][$id])) {
                     $_SESSION['cart'][$id]['quantity']++;
@@ -33,6 +34,7 @@ class BouquetsController extends AbstractController
                     $_SESSION['cart'][$id] = [
                         'quantity' => 1,
                         'name' => $name,
+                        'category' => $category,
                         'price' => $price
                     ];
                 }
@@ -60,6 +62,7 @@ class BouquetsController extends AbstractController
             exit;
         }
         var_dump($_SESSION);
+        var_dump($bouquets);
         return $this->twig->render('Bouquets/nosBouquets.html.twig', ['bouquets' => $bouquets]);
     }
 }
