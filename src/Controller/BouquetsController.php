@@ -53,7 +53,7 @@ class BouquetsController extends AbstractController
         if ($resultFilter) {
             $bouquets = $resultFilter;
         } else {
-            $bouquets = $catalogManager->selectProducts();
+            $bouquets = $catalogManager->showBouquets();
         }
 
         if (isset($_GET['add_to_cart'])) {
@@ -61,8 +61,6 @@ class BouquetsController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-        var_dump($_SESSION);
-        var_dump($bouquets);
         return $this->twig->render('Bouquets/nosBouquets.html.twig', ['bouquets' => $bouquets]);
     }
 }

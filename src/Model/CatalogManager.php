@@ -16,16 +16,7 @@ class CatalogManager extends AbstractManager
         return $productCatalog;
     }
 
-    // public function showBouquet(): array
-    // {
-    //     $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category = :category");
-    //     $statement->bindValue(':category', 'bouquet');
-    //     $statement->execute();
-    //     $productBouquet = $statement->fetchAll();
-    //     return $productBouquet;
-    // }
-
-    public function selectProducts(): array
+    public function showBouquets(): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
         LEFT JOIN images ON products.id=images.Products_idProducts 
@@ -38,6 +29,7 @@ class CatalogManager extends AbstractManager
     public function filterBouquetColor($color): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        LEFT JOIN images ON products.id=images.Products_idProducts 
         WHERE color = :color AND category = 'bouquet'");
         $statement->bindValue(':color', $color);
         $statement->execute();
