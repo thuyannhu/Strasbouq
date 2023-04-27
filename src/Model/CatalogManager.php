@@ -10,7 +10,7 @@ class CatalogManager extends AbstractManager
 
     public function showCatalogue(): array
     {
-        $statement = $this->pdo->prepare("SELECT name, description, price FROM " . self::TABLE . "");
+        $statement = $this->pdo->prepare("SELECT id, name, description, price FROM " . self::TABLE . "");
         $statement->execute();
         $productCatalog = $statement->fetchAll();
         return $productCatalog;
@@ -18,7 +18,7 @@ class CatalogManager extends AbstractManager
 
     public function showBouquet(): array
     {
-        $statement = $this->pdo->prepare("SELECT name, description, price 
+        $statement = $this->pdo->prepare("SELECT id, name, description, price 
         FROM " . self::TABLE . " WHERE category = :category");
         $statement->bindValue(':category', 'bouquet');
         $statement->execute();
@@ -26,14 +26,21 @@ class CatalogManager extends AbstractManager
         return $productBouquet;
     }
 
-    public function filterColor(): array
+    public function filterColor($color): array
     {
-        $color = $_POST['color'];
         $statement = $this->pdo->prepare("SELECT name, description, price 
         FROM " . self::TABLE . " WHERE color = :color");
         $statement->bindValue(':color', $color);
         $statement->execute();
         $productFilter = $statement->fetchAll();
         return $productFilter;
+    }
+
+    public function getProductById($id)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE id = :id");
+        $statement->execute([':id' => $id]);
+        $product = $statement->fetch();
+        return $product;
     }
 }
