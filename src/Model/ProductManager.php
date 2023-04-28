@@ -29,7 +29,7 @@ class ProductManager extends AbstractManager
     }
 
     public function insert(array $product): int
-    { 
+    {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (
         `name`,
         `description`,

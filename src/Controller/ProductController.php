@@ -34,7 +34,7 @@ class ProductController extends AbstractController
     public function add(): ?string
     {
         $message = [];
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
 
@@ -44,8 +44,8 @@ class ProductController extends AbstractController
                 $id = $productManager->insert($product);
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
-                
-                
+
+
                 header('Location: /products/show?id=' . $id);
                 return null;
             } else {
