@@ -37,6 +37,7 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
+            $id = null;
 
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
@@ -52,7 +53,7 @@ class ProductController extends AbstractController
                 $message = $this->addErrorsToMessage($errors, $message);
             }
         }
-        return $this->twig->render('Product/add.html.twig', ['message' => $message]);
+        return $this->twig->render('Product/add.html.twig', ['message' => $message, 'id' => $id]);
     }
 
     public function edit(int $id): ?string
