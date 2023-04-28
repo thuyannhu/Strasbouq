@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block navbar %}
+{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
 {% block content %}
     {% if message is not empty %}
                 <div
@@ -15,4 +19,7 @@
             {% include 'Product/_form.html.twig' %}
     
 {% endblock %}
+
+
+{% block footer %}{% endblock footer %}
 

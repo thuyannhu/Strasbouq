@@ -13,7 +13,7 @@ body {
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
-    border-bottom: solid 1px black;
+
     width: 100vw;
     padding-right: 3vw;
 }
@@ -75,3 +75,4 @@ body {
         padding-right: 30px;
     }
 }
+
