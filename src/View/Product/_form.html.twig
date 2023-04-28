@@ -1,29 +1,41 @@
 {# TODO : manage errors display #}
+<div class="row d-flex align-items-center justify-content-center my-5">
+  <div class="col-md-6">
+    <div class="card mb-8">
+      <div class="card-header py-4">
+        <h5 class="mb-0">Ajouter un produit</h5>
+      </div>
+      <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+         <div class="col-5">
+    <!-- Product name -->
+    <div class="form-outline mb-4">
+      <input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" placeholder="Nom" />
+      <label class="form-label" for="name">Nom</label>
+    </div>
+     </div>
+          <!-- Product description -->
+          <div class="form-outline mb-4">
+            <textarea name="description" class="form-control" id="description" rows="6" value="{{ product.description }}"></textarea>
+            <label class="form-label" for="description">Description du produit</label>
+          </div>
 
-<form method="post" enctype="multipart/form-data">
-	 <div class="form-row">
-    <input type="hidden" value="{{ product.id }}" name="id" >
-    <div class="form-group col-md-6">
-    <label for="name">Nom</label>
-	<input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" placeholder="Nom">
+ <div class="row">
+  <div class="col-3">
+    <!-- Product price -->
+    <div class="form-outline mb-3">
+      <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix" />
+      <label class="form-label" for="price">Prix</label>
     </div>
-    <div class="form-group col-md-6">
-    <label for="description">Description</label>
-    <textarea name="description" class="form-control" rows="10" placeholder="Description" value="{{ product.description }}"></textarea>
+  </div>
+  <div class="col-3">
+    <!-- Product inventory -->
+    <div class="form-outline mb-3">
+      <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock" />
+      <label class="form-label" for="inventory">Stock</label>
     </div>
-   <div class="custom-file">    
-    <input type="file" class="custom-file-input" value="{{ product.image }}" name="image" id="imageUpload"/>
-    <label class="custom-file-label" for="imageUpload">Ajouter une image</label>    
-    </div>
-    <div class="form-group col-md-6">
-    <label for="price">Prix</label>
-    <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix">
-    </div>
-    <div class="form-group col-md-6">
-    <label for="inventory">Stock</label>
-    <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock">
-    </div>
-    <div class="form-group col-md-6">
+  </div>
+<div class="col-3">
     <select name="color" id="color" class="form-control" value="{{ product.color }}">
         <option value="">Couleur</option>
         <option value="rouge">rouge</option>
@@ -36,15 +48,30 @@
         <option value="blanc">blanc</option>
     </select>
     </div>
-    <div class="form-group col-md-6">
+    <div class="col-3">
     <select name="category" id="category" class="form-control " value="{{ product.category }}">
         <option value="">Catégorie</option>
         <option value="bouquet">Bouquet</option>
         <option value="fleur coupée">Fleur coupée</option>
     </select>
+    </div>
+</div>
+   <div class="custom-file mb-3">    
+    <input type="file" class="custom-file-input" value="{{ product.image }}" name="image" id="imageUpload"/>
+    <label class="custom-file-label" for="imageUpload">Ajouter une image</label>    
+    </div>
 
-    </div>
-    </div>
+    <div class="form-check">
+  <input class="form-check-input" type="checkbox" name="isTrending" value="1" id="isTrending" />
+  <label class="form-check-label" for="isTrending">Mettre en vedette</label>
+</div>
+
+    <div class="d-flex align-items-center">
   <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+  </div>
 
+
+        </form>
+      </div>
+    </div>
+  </div>

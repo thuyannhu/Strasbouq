@@ -1,6 +1,18 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Ajouter un nouveau produit</h1>
-    {% include 'Product/_form.html.twig' %}
+    {% if message is not empty %}
+                <div
+                    class="border p-5">
+                    {% for line in message %}
+                    <div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
+                        {{ line }}
+                        </div>
+                        <br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% include 'Product/_form.html.twig' %}
+    
 {% endblock %}
+

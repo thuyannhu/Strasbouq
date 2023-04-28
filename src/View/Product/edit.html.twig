@@ -2,6 +2,19 @@
 
 {% block content %}
     <h1>Modifier {{ product.name }}</h1>
+
+        {% if message is not empty %}
+                <div
+                    class="border p-5">
+                    {% for line in message %}
+                    <div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
+                        {{ line }}
+                        </div>
+                        <br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
     <p>Images du produit<p>
     <div class="d-flex align-items-center">
            <img
