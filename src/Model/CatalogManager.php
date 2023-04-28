@@ -39,7 +39,9 @@ class CatalogManager extends AbstractManager
 
     public function getProductById($id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE id = :id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        LEFT JOIN images ON products.id=images.Products_idProducts 
+        WHERE Products_idProducts = :id");
         $statement->execute([':id' => $id]);
         $product = $statement->fetch();
         return $product;

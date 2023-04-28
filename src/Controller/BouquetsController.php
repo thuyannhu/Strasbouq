@@ -27,6 +27,7 @@ class BouquetsController extends AbstractController
             if ($product) {
                 $name = $product['name'];
                 $category = $product['category'];
+                $filename = $product['filename'];
                 $price = $product['price'];
                 if (isset($_SESSION['cart'][$id])) {
                     $_SESSION['cart'][$id]['quantity']++;
@@ -34,6 +35,7 @@ class BouquetsController extends AbstractController
                     $_SESSION['cart'][$id] = [
                         'quantity' => 1,
                         'name' => $name,
+                        'filename' => $filename,
                         'category' => $category,
                         'price' => $price
                     ];
@@ -61,6 +63,7 @@ class BouquetsController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
+        var_dump($_SESSION['cart']);
         return $this->twig->render('Bouquets/nosBouquets.html.twig', ['bouquets' => $bouquets]);
     }
 }

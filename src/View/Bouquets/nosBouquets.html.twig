@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+	{{ dump(bouquets) }}
 	<section>
 		<div class="text-center container py-5">
 			<h4 class="mt-4 mb-5">
@@ -43,6 +44,8 @@
 							<div class="card">
 								<div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
 									<img src="{{bouquet.filename}}" class="w-100"/>
+
+
 									<a href="">
 										<div class="hover-overlay">
 											<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
