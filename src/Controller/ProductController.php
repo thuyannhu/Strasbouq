@@ -31,22 +31,6 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/showsheet.html.twig', ['product' => $productImage]);
     }
 
-    public function add1(): ?string
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product = array_map('trim', $_POST);
-            $productManager = new ProductManager();
-            $id = $productManager->insert($product);
-
-            $image = new ImageController();
-            $image->addImage($_FILES, $id);
-            header('Location: /products/show?id=' . $id);
-            return null;
-        }
-        return $this->twig->render('Product/add.html.twig');
-    }
-
-
     public function add(): ?string
     {
         $message = [];
