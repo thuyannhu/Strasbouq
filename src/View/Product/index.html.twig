@@ -61,7 +61,7 @@
                 {% endif %}
                 <td class="fw-normal mb-1">{{ image.price }}€</td>
                 <td>
-                    <a href="/products/show?id={{ image.Products_idProducts }}">
+                    <a href="/products/showsheet?id={{ image.Products_idProducts }}">
                     <button type="button" class="btn btn-primary btn-floating">
                     <i class="fas fa-eye"></i>
                     </button>
@@ -88,7 +88,6 @@
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
-
 {% endblock %}
 
    {% block footer %}
