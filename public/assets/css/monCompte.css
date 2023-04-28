@@ -1,0 +1,39 @@
+
+.contenaire{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+    justify-content: space-evenly;
+    border: solid 2px black;
+    border-radius: 20px;
+    height: 600px;
+    width: 1000px;
+    flex-wrap: wrap;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px black;
+    border-radius: 20px;
+    height: 300px;
+    width: 300px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.link{
+    text-decoration: none;
+    color: aliceblue;
+}
+.btn-red{
+    background-color: rgb(162, 11, 11) !important;
+}
+
+

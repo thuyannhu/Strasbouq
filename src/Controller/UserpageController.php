@@ -10,6 +10,12 @@ class UserpageController extends AbstractController
     {
         $userManager = new UserManager();
         $userData = $userManager->selectAll();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST["id"];
+            $userManager->deleteUser($id);
+            header('Location: /userpage');
+            exit;
+        }
         return $this->twig->render('userpage/userpage.html.twig', ['data' => $userData]);
     }
 }
