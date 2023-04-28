@@ -2,6 +2,12 @@
 
 {% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/connect.css">
+
+    {% if user is defined %}
+        {% if not user is same as('') %}
+            <meta http-equiv="refresh" content="0; URL=/monCompte">
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block title %}Connexion{% endblock %}
@@ -33,12 +39,14 @@
                         <br>
                     {% endfor %}
                 </div>
-            {% endif %}
-            {% if user is defined %}
-                <div
-                    class="uk-alert-success">
-                    {{ "Bonjour " ~ user }}
-                </div>
+                {% endif %}
+                {% if user is defined %}
+                {% if not user is same as('') %}
+                    <div
+                        class="uk-alert-success">
+                        {{ "Bonjour " ~ user }}
+                    </div>
+                {% endif %}
             {% endif %}
             <!-- Pills content -->
             <div class="tab-content">

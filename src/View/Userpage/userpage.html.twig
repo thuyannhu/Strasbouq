@@ -24,6 +24,7 @@
             <th>Télephone</th>
             <th>Email</th>
             <th>Fidélité</th>
+            <th>SUPPRIMER</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,14 @@
                 <th>{{ user['phone'] }}</th>
                 <th>{{ user['mail'] }}</th>
                 <th>{{ user['fidelity'] }}</th>
+                <th>
+                    <form method="POST">
+                        <input type="hidden" name="id" value="{{ user['id'] }}">
+                        <button type="submit" class="btn btn-primary btn-floating">
+                        <i class="fas fa-trash-can"></i>
+                        </button>
+                    </form>
+                </th>
             </tr>
         {% endfor %}
     </tbody>

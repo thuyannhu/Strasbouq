@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block navbar %}
+{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
 {% block content %}
     <h1>Modifier {{ product.name }}</h1>
 
@@ -27,3 +31,5 @@
     
     <a href="/products/show?id={{ product.id}}">Back</a>
 {% endblock %}
+
+{% block footer %}{% endblock footer %}

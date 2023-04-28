@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block navbar %}
+{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
 {% block content %}
     <h1>{{ product.name }}</h1>
         <table class="table align-middle mb-0 bg-white">
@@ -59,5 +63,4 @@
     <a href="/products">Back</a>
 
 {% endblock %}
-{% block footer %}
-    {% endblock footer %}
+{% block footer %}{% endblock footer %}

@@ -88,8 +88,11 @@ class ConnecterController extends AbstractController
         $userPassword = $this->getPassword();
         if ($this->isExistingUser($userPassword)) {
             if ($this->isGoodPassword($userPassword)) {
+                $_SESSION['user'] = $_POST["email"];
                 $message = ["vous etes connecté!"];
                 $alert = 'success';
+                header('Location: /');
+                exit;
             } else {
                 $message = ["erreur!! mot de passe erroné"];
                 $alert = 'danger';
@@ -130,9 +133,6 @@ class ConnecterController extends AbstractController
                 $resultConnexion = $this->connectAgent();
                 $message = $resultConnexion[0];
                 $alert = $resultConnexion[1];
-                $_SESSION['user'] = $_POST["email"];
-                header('Location: /');
-                exit;
             } else {
                 // Inscription
                 $errors = $this->verificationGlobale();
@@ -140,6 +140,8 @@ class ConnecterController extends AbstractController
                     $this->insertDataIntoDB();
                     $message = ["Bravo! Votre inscription a réussi."];
                     $alert = 'success';
+                    header('Location: /monCompte');
+                    exit;
                 } else {
                     $message = $this->addErrorsToMessage($errors, $message);
                     $alert = 'danger';
