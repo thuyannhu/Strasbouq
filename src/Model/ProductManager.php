@@ -29,7 +29,7 @@ class ProductManager extends AbstractManager
     }
 
     public function insert(array $product): int
-    {
+    { 
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (
         `name`,
         `description`,
@@ -58,8 +58,6 @@ class ProductManager extends AbstractManager
 
     public function update(array $product): bool
     {
-        //var_dump($product);
-        //die();
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET 
         `name` = :name,
         `description` = :description,
