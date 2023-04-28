@@ -36,19 +36,22 @@ class ProductManager extends AbstractManager
         `price`,
         `inventory`,
         `color`,
-        `category`) 
+        `category`,
+        `isTrending`) 
         VALUES (:name, 
         :description, 
         :price, 
         :inventory, 
         :color, 
-        :category)");
+        :category,
+        :isTrending)");
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], PDO::PARAM_STR);
         $statement->bindValue('price', $product['price'], PDO::PARAM_INT);
         $statement->bindValue('inventory', $product['inventory'], PDO::PARAM_INT);
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
+        $statement->bindValue('isTrending', $product['isTrending'], PDO::PARAM_INT);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
@@ -61,7 +64,8 @@ class ProductManager extends AbstractManager
         `price` = :price,
         `inventory` = :inventory,
         `color` = :color,
-        `category` = :category
+        `category` = :category,
+        `isTrending`=:isTrending
          WHERE id=:id");
         $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
@@ -70,6 +74,8 @@ class ProductManager extends AbstractManager
         $statement->bindValue('inventory', $product['inventory'], PDO::PARAM_INT);
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
+        $statement->bindValue('isTrending', $product['isTrending'], PDO::PARAM_INT);
+
 
         return $statement->execute();
     }

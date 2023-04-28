@@ -18,6 +18,7 @@ return [
     'products' => ['ProductController', 'index',],
     'products/edit' => ['ProductController', 'edit', ['id']],
     'products/show' => ['ProductController', 'show', ['id']],
+    'products/showsheet' => ['ProductController', 'showsheet', ['id']],
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
     'userpage' => ['UserpageController', 'userpage',],
