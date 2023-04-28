@@ -1,0 +1,12 @@
+p, h4{
+    text-align: center;
+    margin-top: 40px;
+}
+.box{
+    border: solid 2px black ;
+    border-radius: 20px;
+    height: 70%;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 25px;
+}

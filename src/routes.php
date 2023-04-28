@@ -27,4 +27,5 @@ return [
     'monCompte' => ['CompteController', 'moncompte',],
     'cart' => ['CartController', 'cart',],
     'cart/clearCart' => ['CartController', 'clearCart',],
+    'legal' => ['LegalController', 'legal',],
 ];
