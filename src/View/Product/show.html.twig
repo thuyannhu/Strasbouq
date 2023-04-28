@@ -27,8 +27,8 @@
               ;>
         </div>
       </td>
-              <a href="/products/show?id={{ product.id }}">
-                <td class="fw-normal mb-1">{{ product.id }}</td>
+              <a href="/products/show?id={{ id }}">
+                <td class="fw-normal mb-1">{{ id }}</td>
                 <td class="fw-normal mb-1">{{ product.name }}</td>
                 <td class="fw-normal mb-1">{{ product.category }}</td>
                 <td class="fw-normal mb-1">{{ product.inventory }}</td>
@@ -43,7 +43,7 @@
                 {% endif %}
                 <td class="fw-normal mb-1">{{ product.price }}€</td>
                 <td>
-                <a href="/products/edit?id={{ product.id }}">
+                <a href="/products/edit?id={{ id }}">
                 <button
                 type="button"
                 class="btn btn-link btn-rounded btn-sm fw-bold"

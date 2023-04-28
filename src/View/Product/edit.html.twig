@@ -24,6 +24,7 @@
               ;>
     </div></br>
     {% include 'product/_form.html.twig' %}
+    {{dump(product)}}
     
-    <a href="/products/show?id={{ product.id}}">Back</a>
+    <a href="/products/show?id={{ product.Products_idProducts}}">Back</a>
 {% endblock %}

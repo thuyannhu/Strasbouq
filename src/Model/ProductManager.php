@@ -58,6 +58,8 @@ class ProductManager extends AbstractManager
 
     public function update(array $product): bool
     {
+        //var_dump($product);
+        //die();
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET 
         `name` = :name,
         `description` = :description,
@@ -65,7 +67,7 @@ class ProductManager extends AbstractManager
         `inventory` = :inventory,
         `color` = :color,
         `category` = :category,
-        `isTrending`=:isTrending
+        `isTrending` = :isTrending
          WHERE id=:id");
         $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
@@ -75,7 +77,6 @@ class ProductManager extends AbstractManager
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
         $statement->bindValue('isTrending', $product['isTrending'], PDO::PARAM_INT);
-
 
         return $statement->execute();
     }

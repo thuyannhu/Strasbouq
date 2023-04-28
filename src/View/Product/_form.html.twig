@@ -9,6 +9,7 @@
         <form method="post" enctype="multipart/form-data">
          <div class="col-5">
     <!-- Product name -->
+    <input type="hidden" value="{{ id }}" name="id">
     <div class="form-outline mb-4">
       <input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" placeholder="Nom" />
       <label class="form-label" for="name">Nom</label>
@@ -38,21 +39,21 @@
 <div class="col-3">
     <select name="color" id="color" class="form-control" value="{{ product.color }}">
         <option value="">Couleur</option>
-        <option value="rouge">rouge</option>
-        <option value="orange">orange</option>
-        <option value="jaune">jaune</option>
-        <option value="vert">vert</option>
-        <option value="bleu">bleu</option>
-        <option value="violet">violet</option>
-        <option value="rose">rose</option>
-        <option value="blanc">blanc</option>
+        <option value="rouge" {% if product.color == 'rouge' %} selected {% endif %}>rouge</option>
+        <option value="orange" {% if product.color == 'orange' %} selected {% endif %}>orange</option>
+        <option value="jaune" {% if product.color == 'jaune' %} selected {% endif %}>jaune</option>
+        <option value="vert" {% if product.color == 'vert' %} selected {% endif %}>vert</option>
+        <option value="bleu" {% if product.color == 'bleu' %} selected {% endif %}>bleu</option>
+        <option value="violet" {% if product.color == 'violet' %} selected {% endif %}>violet</option>
+        <option value="rose" {% if product.color == 'rose' %} selected {% endif %}>rose</option>
+        <option value="blanc" {% if product.color == 'blanc' %} selected {% endif %}>blanc</option>
     </select>
     </div>
     <div class="col-3">
     <select name="category" id="category" class="form-control " value="{{ product.category }}">
         <option value="">Catégorie</option>
-        <option value="bouquet">Bouquet</option>
-        <option value="fleur coupée">Fleur coupée</option>
+        <option value="bouquet" {% if product.category == 'bouquet' %} selected {% endif %}>Bouquet</option>
+        <option value="fleur coupée"  {% if product.category == 'fleur coupée' %} selected {% endif %}>Fleur coupée</option>
     </select>
     </div>
 </div>
