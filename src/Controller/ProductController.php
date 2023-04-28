@@ -21,7 +21,7 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/show.html.twig', ['product' => $productImage]);
+        return $this->twig->render('Product/show.html.twig', ['product' => $productImage, 'id' => $id]);
     }
 
     public function showsheet(int $id): string
@@ -37,15 +37,14 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
-            $id = null;
 
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
                 $productManager = new ProductManager();
                 $id = $productManager->insert($product);
-
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
+
 
                 header('Location: /products/show?id=' . $id);
                 return null;
@@ -53,7 +52,7 @@ class ProductController extends AbstractController
                 $message = $this->addErrorsToMessage($errors, $message);
             }
         }
-        return $this->twig->render('Product/add.html.twig', ['message' => $message, 'id' => $id]);
+        return $this->twig->render('Product/add.html.twig', ['message' => $message]);
     }
 
     public function edit(int $id): ?string
@@ -69,12 +68,16 @@ class ProductController extends AbstractController
                 $product = array_map('trim', $_POST);
                 $productManager->update($product);
                 header('Location: /products/show?id=' . $id);
+                return null;
             } else {
                 $message = $this->addErrorsToMessage($errors, $message);
             }
         }
 
-        return $this->twig->render('product/edit.html.twig', ['product' => $product, 'message' => $message]);
+        return $this->twig->render(
+            'product/edit.html.twig',
+            ['product' => $product, 'message' => $message, 'id' => $id]
+        );
     }
 
     public function delete(): void
