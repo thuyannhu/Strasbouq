@@ -27,7 +27,9 @@ class BouquetsController extends AbstractController
             if ($product) {
                 $name = $product['name'];
                 $category = $product['category'];
+                $filename = $product['filename'];
                 $price = $product['price'];
+                $product_id = $product['Products_idProducts'];
                 if (isset($_SESSION['cart'][$id])) {
                     $_SESSION['cart'][$id]['quantity']++;
                 } else {
@@ -35,7 +37,9 @@ class BouquetsController extends AbstractController
                         'quantity' => 1,
                         'name' => $name,
                         'category' => $category,
-                        'price' => $price
+                        'filename' => $filename,
+                        'price' => $price,
+                        'id' => $product_id
                     ];
                 }
             }

@@ -22,10 +22,11 @@ return [
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
     'userpage' => ['UserpageController', 'userpage',],
-    'connecter' => ['ConnecterController','connect',],
+    'connecter' => ['ConnecterController', 'connect',],
     'devis' => ['DevisController', 'devis',],
     'admin' => ['AdminController', 'admin',],
     'monCompte' => ['CompteController', 'moncompte',],
     'cart' => ['CartController', 'cart',],
     'cart/clearCart' => ['CartController', 'clearCart',],
+    'cart/clearProduct' => ['CartController', 'clearProduct',],
 ];

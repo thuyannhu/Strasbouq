@@ -8,6 +8,11 @@
     margin-top: 5%;
 }
 
+.cardImage {
+    min-height: 250px;
+    object-fit: cover;
+}
+
 .cartCard {
     margin-left: 50%;
 }
