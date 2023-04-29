@@ -36,8 +36,8 @@ class BouquetsController extends AbstractController
                     $_SESSION['cart'][$id] = [
                         'quantity' => 1,
                         'name' => $name,
-                        'category' => $category,
                         'filename' => $filename,
+                        'category' => $category,
                         'price' => $price,
                         'id' => $productId
                     ];
@@ -65,6 +65,7 @@ class BouquetsController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
+        var_dump($_SESSION['cart']);
         return $this->twig->render('Bouquets/nosBouquets.html.twig', ['bouquets' => $bouquets]);
     }
 }
