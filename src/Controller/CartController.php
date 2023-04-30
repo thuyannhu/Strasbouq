@@ -7,6 +7,7 @@ class CartController extends AbstractController
     public function clearCart()
     {
         // Supprime les données de la session relatives au panier
+        session_unset();
         unset($_SESSION['cart']);
         header('Location: /cart');
         exit();
@@ -14,14 +15,15 @@ class CartController extends AbstractController
 
     public function clearProduct()
     {
-        // Supprime les données de la session relatives à un produit
-        // if (isset($_SESSION['cart']))
-        $id = $_SESSION['cart']['id'];
-        var_dump($_SESSION['cart']);
-        var_dump($id);
-        unset($_SESSION['cart'][$id]);
-        header('Location: /cart');
-        exit();
+        if (isset($_GET['productId'])) {
+            $productId = $_GET['productId'];
+            // Supprime les données de la session relatives à un produit
+            if (isset($_SESSION['cart'][$productId])) {
+                unset($_SESSION['cart'][$productId]);
+            }
+            header('Location: /cart');
+            exit();
+        }
     }
 
     public function cart(): string
