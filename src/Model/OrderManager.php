@@ -6,32 +6,34 @@ use PDO;
 
 class OrderManager extends AbstractManager
 {
-    public const ORDER = 'order';
-    public const USER = 'user';
+    public const TABLE = 'order';
 
-    public function addOrder(array $order): int
+    public function insertOrder($userMail, $price)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::ORDER . " (
-        `orderNumber`,
-        `date`,
-        `price`,
-        `status`,
-        VALUES (:orderNumber, 
-        :date, 
-        :price, 
-        :status)");
-        $statement->bindValue('orderNumber', $order['orderNumber'], PDO::PARAM_INT);
-        $statement->bindValue('date', $order['date'], PDO::PARAM_STR);
-        $statement->bindValue('price', $order['price'], PDO::PARAM_INT);
-        $statement->bindValue('status', $order['status'], PDO::PARAM_STR);
+        $orderNumber = uniqid();
+        $date = date("Y-m-d H:i");
+        $status = "En cours";
+
+        $statement = $this->pdo->prepare("
+        INSERT INTO `" . self::TABLE . "` (`orderNumber`, `date`, `price`, `status`, `User_idUser`)
+        SELECT :orderNumber, :date, :price, :status, `user`.`id`
+        FROM `user`
+        WHERE `user`.`mail` = :userMail");
+
+        $statement->bindValue(':orderNumber', $orderNumber);
+        $statement->bindValue(':date', $date);
+        $statement->bindValue(':price', $price);
+        $statement->bindValue(':status', $status);
+        $statement->bindValue(':userMail', $userMail);
         $statement->execute();
-        return (int)$this->pdo->lastInsertId();
+
+        return $this->pdo->lastInsertId();
     }
 
     public function showAllOrder(): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::ORDER . " 
-        INNER JOIN " . self::USER . " ON user.id=order.User_idUser ");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        INNER JOIN `user` ON user.id=order.User_idUser ");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

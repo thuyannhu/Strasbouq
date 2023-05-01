@@ -29,6 +29,7 @@ return [
     'cart' => ['CartController', 'cart',],
     'cart/clearCart' => ['CartController', 'clearCart',],
     'cart/clearProduct' => ['CartController', 'clearProduct',],
+    'order/addOrder' => ['OrderController', 'addOrder',],
     'adminOrder' => ['OrderController', 'adminOrder',],
     'userOrder' => ['OrderController', 'userOrder',],
 ];
