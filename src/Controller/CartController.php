@@ -7,7 +7,6 @@ class CartController extends AbstractController
     public function clearCart()
     {
         // Supprime les données de la session relatives au panier
-        session_unset();
         unset($_SESSION['cart']);
         header('Location: /cart');
         exit();
@@ -32,7 +31,6 @@ class CartController extends AbstractController
             $_SESSION['cart'] = [];
         }
 
-        var_dump($_SESSION);
         return $this->twig->render('Cart/cart.html.twig', ['cart' => $_SESSION['cart']]);
     }
 }

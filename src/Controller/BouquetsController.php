@@ -65,7 +65,6 @@ class BouquetsController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-        var_dump($_SESSION['cart']);
         return $this->twig->render('Bouquets/nosBouquets.html.twig', ['bouquets' => $bouquets]);
     }
 }

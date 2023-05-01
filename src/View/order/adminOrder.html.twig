@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}Commandes
+{% endblock %}
+{% block navbar %}
+	{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
+{% block content %}
+	<h1>Commandes</h1>
+
+	<table class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>Id</th>
+				<th>Numéro de commande</th>
+				<th>Date</th>
+				<th>Nom</th>
+				<th>Code postal</th>
+				<th>Ville</th>
+				<th>Télephone</th>
+				<th>Email</th>
+				<th>Prix</th>
+				<th>Status</th>
+				<th>SUPPRIMER</th>
+			</tr>
+		</thead>
+		<tbody>
+			{# {% for user in data %} #}
+			<tr>
+				<th>Id commande</th>
+				<th>Num commande</th>
+				<th>Date de la commande</th>
+				<th>Nom du client</th>
+				<th>Code postal du client</th>
+				<th>Ville du client</th>
+				<th>Telephone du client</th>
+				<th>Mail client</th>
+				<th>Prix commande</th>
+				<th>Status commande</th>
+				<th>
+					<form method="POST">
+						<input type="hidden" name="id" value="">
+						<button type="submit" class="btn btn-primary btn-floating">
+							<i class="fas fa-trash-can"></i>
+						</button>
+					</form>
+				</th>
+			</tr>
+			{# {% endfor %} #}
+		</tbody>
+	{% endblock %}
+
+	{% block footer %}{% endblock footer %}
