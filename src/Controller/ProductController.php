@@ -90,7 +90,7 @@ class ProductController extends AbstractController
         }
     }
 
-    public function trending() : void
+    public function trending(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
