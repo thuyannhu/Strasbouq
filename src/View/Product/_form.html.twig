@@ -19,21 +19,18 @@
           </div>
 
  <div class="row">
-  <div class="col-3">
-    <!-- Product price -->
-    <div class="mb-3">
-      <label class="form-label" for="price">Prix</label>
-      <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix" />
-    </div>
+
+  <div class="col-2 mb-3">
+    <label class="form-label" for="price">Prix</label>
+    <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix" />
   </div>
-  <div class="col-3">
-    <!-- Product inventory -->
-    <div class="mb-3">
-            <label class="form-label" for="inventory">Stock</label>
-<input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock" />
-    </div>
+
+  <div class="col-2 mb-3">
+    <label class="form-label" for="inventory">Stock</label>
+    <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock" />
   </div>
-<div class="col-3">
+
+  <div class="col-2">
     <label class="form-label select-label" for="color">Couleur</label>
     <select name="color" id="color" class="form-control" value="{{ product.color }}">
         <option value="">Couleur</option>
@@ -46,33 +43,35 @@
         <option value="rose" {% if product.color == 'rose' %} selected {% endif %}>rose</option>
         <option value="blanc" {% if product.color == 'blanc' %} selected {% endif %}>blanc</option>
     </select>
-    </div>
-    <div class="col-3">    
+  </div>
+
+  <div class="col-3">    
     <label class="form-label select-label" for="category">Catégorie</label>
     <select name="category" id="category" class="form-control " value="{{ product.category }}">
         <option value="bouquet" {% if product.category == 'bouquet' %} selected {% endif %}>Bouquet</option>
         <option value="fleur coupée"  {% if product.category == 'fleur coupée' %} selected {% endif %}>Fleur coupée</option>
     </select>
-    </div>
+  </div>
+    
+  <div class="col-3 mb-3">    
+    <label class="form-label select-label" for="isTrending">Mettre en vedette</label>
+      <select name="isTrending" id="isTrending" class="form-control " value="{{ product.isTrending }}">
+        <option value= 1 {% if product.isTrending == '1' %} selected {% endif %}>oui</option>
+        <option value= 0  {% if product.isTrending == '0' %} selected {% endif %}>non</option>
+      </select> 
+  </div>
 </div>
+
    <div class="custom-file mb-3">    
     <input type="file" class="custom-file-input" value="{{ product.image }}" name="image" id="imageUpload"/>
     <label class="custom-file-label" for="imageUpload">Ajouter une image</label>    
     </div>
-
-  <label class="form-label select-label" for="isTrending">Mettre en vedette</label>
-      <div class="col-3 mb-3">    
-    <select name="isTrending" id="isTrending" class="form-control " value="{{ product.isTrending }}">
-        <option value= 1 {% if product.isTrending == '1' %} selected {% endif %}>oui</option>
-        <option value= 0  {% if product.isTrending == '0' %} selected {% endif %}>non</option>
-    </select> 
-
+    
+    <div class="d-flex align-items-center justify-content-end">
+  <button type="submit" class="btn btn-primary">Valider</button>
     </div>
+</div>
 
-
-    <div class="d-flex align-items-center">
-  <button type="submit" class="btn btn-primary">Ajouter</button>
-  </div>
 
 
         </form>
