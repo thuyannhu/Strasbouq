@@ -4,6 +4,10 @@ namespace App\Controller;
 
 class OrderController extends AbstractController
 {
+    public function addOrder()
+    {
+    }
+
     public function adminOrder()
     {
         return $this->twig->render('order/adminOrder.html.twig');

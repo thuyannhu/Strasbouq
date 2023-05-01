@@ -7,31 +7,32 @@ use PDO;
 class OrderManager extends AbstractManager
 {
     public const ORDER = 'order';
-    public const PRODUCTS = 'products';
     public const USER = 'user';
 
     public function addOrder(array $order): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::ORDER . " (
-        `name`,
-        `description`,
+        `orderNumber`,
+        `date`,
         `price`,
-        `inventory`,
-        `color`,
-        `category`)
-        VALUES (:name, 
-        :description, 
+        `status`,
+        VALUES (:orderNumber, 
+        :date, 
         :price, 
-        :inventory, 
-        :color, 
-        :category)");
-        $statement->bindValue('name', $order['name'], PDO::PARAM_STR);
-        $statement->bindValue('description', $order['description'], PDO::PARAM_STR);
+        :status)");
+        $statement->bindValue('orderNumber', $order['orderNumber'], PDO::PARAM_INT);
+        $statement->bindValue('date', $order['date'], PDO::PARAM_STR);
         $statement->bindValue('price', $order['price'], PDO::PARAM_INT);
-        $statement->bindValue('inventory', $order['inventory'], PDO::PARAM_INT);
-        $statement->bindValue('color', $order['color'], PDO::PARAM_STR);
-        $statement->bindValue('category', $order['category'], PDO::PARAM_STR);
+        $statement->bindValue('status', $order['status'], PDO::PARAM_STR);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function showAllOrder(): array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::ORDER . " 
+        INNER JOIN " . self::USER . " ON user.id=order.User_idUser ");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
