@@ -90,6 +90,16 @@ class ProductController extends AbstractController
         }
     }
 
+    public function trending() : void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $productManager = new ProductManager();
+            $productManager->addTrending((int)$id);
+            header('Location:/products');
+        }
+    }
+
     private function translate($input)
     {
         $translated = [

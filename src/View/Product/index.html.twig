@@ -24,6 +24,7 @@
         <th>Niveau de stock</th>
         <th>Prix</th>
         <th>Voir la fiche</th>
+        <th>Mettre en vedette</th>
         <th>Modifier</th>
         <th>Supprimer</th>
         <th><a href="/products/add">
@@ -67,6 +68,14 @@
                     </button>
                     </a>
                  </td>
+              <td>
+                 <form action="/products/trending" method="POST">
+                    <input type="hidden" name="id" value="{{ image.Products_idProducts }}">
+                    <button type="submit" class="btn btn-primary btn-floating">
+                    <i class="fas fa-star"></i>
+                    </button>
+                </form>
+                </td>
                 <td>
                     <a href="/products/edit?id={{ image.Products_idProducts }}">
                     <button type="button" class="btn btn-primary btn-floating">

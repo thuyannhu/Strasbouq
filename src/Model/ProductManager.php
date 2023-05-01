@@ -88,4 +88,15 @@ class ProductManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function addTrending(int $id) : void
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " INNER JOIN 
+        images ON products.id=images.Products_idProducts SET isTrending = 1 WHERE products.id=:id");
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        $statement->execute();
+
+    }
 }

@@ -21,6 +21,7 @@ return [
     'products/showsheet' => ['ProductController', 'showsheet', ['id']],
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
+    'products/trending' => ['ProductController', 'trending',],
     'userpage' => ['UserpageController', 'userpage',],
     'connecter' => ['ConnecterController','connect',],
     'devis' => ['DevisController', 'devis',],

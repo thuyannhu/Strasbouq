@@ -67,7 +67,7 @@
   <label class="form-check-label" for="isTrending">Mettre en vedette</label>
   </div> #}
 
-      <div class="col-3">
+      <div class="col-3 mb-3">
     <select name="isTrending" id="isTrending" class="form-control " value="{{ product.isTrending }}">
         <option value="">Voulez vous rajouter le produit sur la page d'accueil?</option>
         <option value= 1 {% if product.isTrending == '1' %} selected {% endif %}>oui</option>
