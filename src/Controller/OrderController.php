@@ -15,6 +15,7 @@ class OrderController extends AbstractController
 
     public function userOrder()
     {
+        var_dump($_POST);
         return $this->twig->render('order/userOrder.html.twig');
     }
 }

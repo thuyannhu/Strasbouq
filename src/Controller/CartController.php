@@ -31,6 +31,6 @@ class CartController extends AbstractController
             $_SESSION['cart'] = [];
         }
 
-        return $this->twig->render('Cart/cart.html.twig', ['cart' => $_SESSION['cart']]);
+        return $this->twig->render('Cart/cart.html.twig', ['cart' => $_SESSION['cart'], 'user' => $_SESSION['user']]);
     }
 }

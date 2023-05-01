@@ -64,9 +64,17 @@
 											<h5 class="text-uppercase">Total</h5>
 											<h5>{{ total }}€</h5>
 										</div>
-										<form method="POST" action="/userOrder">
-											<button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Réserver</button>
-										</form>
+										{% if user %}
+											<form method="POST" action="/userOrder">
+												<input type="hidden" name="user" value="{{ user }}">
+												<input type="hidden" name="price" value="{{ total }}">
+												<button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Réserver</button>
+											</form>
+										{% else %}
+											<form action="/connecter">
+												<button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Réserver</button>
+											</form>
+										{% endif %}
 									</div>
 									<div class="p-5">
 										<hr class="my-4">
