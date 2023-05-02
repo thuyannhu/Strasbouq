@@ -19,14 +19,18 @@
                 </div>
             {% endif %}
             
-    <p>Images du produit<p>
-    <div class="d-flex align-items-center">
-           <img
-              src="\{{product.filename}}"
-              alt=""
-              style="width: auto; height: 200px"
-              ;>
-    </div></br>
+   
+    <div class="d-flex justify-content-around"> 
+        <div class="d-flex justify-content-around flex-column align-items-center">
+            
+                <img
+                    src="\{{product.filename}}"
+                    alt=""
+                    style="width: auto; height: 200px"
+                ;>
+                <p>Image actuelle du produit<p>
+        </div>
+    </div>
     {% include 'product/_form.html.twig' %}
 
     <a href="/products/show?id={{ product.Products_idProducts}}">Back</a>
