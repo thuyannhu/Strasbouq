@@ -28,6 +28,7 @@ return [
     'monCompte' => ['CompteController', 'moncompte',],
     'cart' => ['CartController', 'cart',],
     'cart/clearCart' => ['CartController', 'clearCart',],
+    'legal' => ['LegalController', 'legal',],
     'cart/clearProduct' => ['CartController', 'clearProduct',],
     'order/addOrder' => ['OrderController', 'addOrder',],
     'order/updateOrderStatus' => ['OrderController', 'updateOrderStatus',],
