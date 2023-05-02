@@ -31,4 +31,5 @@ return [
     'cart/clearProduct' => ['CartController', 'clearProduct',],
     'adminOrder' => ['OrderController', 'adminOrder',],
     'userOrder' => ['OrderController', 'userOrder',],
+    'legal' => ['LegalController', 'legal',],
 ];
