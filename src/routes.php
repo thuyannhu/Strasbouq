@@ -30,6 +30,8 @@ return [
     'cart/clearCart' => ['CartController', 'clearCart',],
     'cart/clearProduct' => ['CartController', 'clearProduct',],
     'order/addOrder' => ['OrderController', 'addOrder',],
+    'order/updateOrderStatus' => ['OrderController', 'updateOrderStatus',],
+    'order/deleteOrder' => ['OrderController', 'deleteOrder',],
     'adminOrder' => ['OrderController', 'adminOrder',],
     'userOrder' => ['OrderController', 'userOrder',],
 ];

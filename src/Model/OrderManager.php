@@ -32,9 +32,35 @@ class OrderManager extends AbstractManager
 
     public function showAllOrder(): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
-        INNER JOIN `user` ON user.id=order.User_idUser ");
+        $statement = $this->pdo->prepare("SELECT `order`.`id`,
+         `order`.`orderNumber`,
+         `order`.`date`,
+         `user`.`lastname`,
+         `user`.`zipcode`,
+         `user`.`city`,
+         `user`.`phone`,
+         `user`.`mail`,
+         `order`.`price`,
+         `order`.`status`
+        FROM `" . self::TABLE . "` 
+        INNER JOIN `user` ON `user`.`id` = `" . self::TABLE . "`.`User_idUser`");
+
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateOrderStatus($id, $status)
+    {
+        $statement = $this->pdo->prepare("UPDATE `" . self::TABLE . "` SET status=:status WHERE id=:id");
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':status', $status);
+        $statement->execute();
+    }
+
+    public function deleteOrder($id)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM `" . self::TABLE . "` WHERE id=:id");
+        $statement->bindValue(':id', $id);
+        $statement->execute();
     }
 }

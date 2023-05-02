@@ -22,34 +22,49 @@
 				<th>Télephone</th>
 				<th>Email</th>
 				<th>Prix</th>
-				<th>Status</th>
+				<th>Statut</th>
 				<th>SUPPRIMER</th>
 			</tr>
 		</thead>
 		<tbody>
-			{# {% for user in data %} #}
-			<tr>
-				<th>Id commande</th>
-				<th>Num commande</th>
-				<th>Date de la commande</th>
-				<th>Nom du client</th>
-				<th>Code postal du client</th>
-				<th>Ville du client</th>
-				<th>Telephone du client</th>
-				<th>Mail client</th>
-				<th>Prix commande</th>
-				<th>Status commande</th>
-				<th>
-					<form method="POST">
-						<input type="hidden" name="id" value="">
-						<button type="submit" class="btn btn-primary btn-floating">
-							<i class="fas fa-trash-can"></i>
-						</button>
-					</form>
-				</th>
-			</tr>
-			{# {% endfor %} #}
+			{% for order in orders %}
+				<tr>
+					<th>{{order.id}}</th>
+					<th>{{order.orderNumber}}</th>
+					<th>{{order.date}}</th>
+					<th>{{order.lastname}}</th>
+					<th>{{order.zipcode}}</th>
+					<th>{{order.city}}</th>
+					<th>{{order.phone}}</th>
+					<th>{{order.mail}}</th>
+					<th>{{order.price}}</th>
+					<th>
+						<form method="POST" action="order/updateOrderStatus">
+							<select name="status">
+								{% if order.status != 'terminé' %}
+									<option value="{{ order.status }}">{{ order.status }}</option>
+									<option value="terminé">terminé</option>
+								{% else %}
+									<option value="{{ order.status }}">{{ order.status }}</option>
+									<option value="En cours">En cours</option>
+								{% endif %}
+							</select>
+							<button type="submit" class="btn btn-primary btn-floating">
+								<i class="fas fa-check"></i>
+							</button>
+							<input type="hidden" name="id" value="{{ order.id }}">
+						</form>
+					</th>
+					<th>
+						<form method="POST" action="order/deleteOrder">
+							<input type="hidden" name="id" value="{{order.id}}">
+							<button type="submit" class="btn btn-primary btn-floating">
+								<i class="fas fa-trash-can"></i>
+							</button>
+						</form>
+					</th>
+				</tr>
+			{% endfor %}
 		</tbody>
 	{% endblock %}
-
 	{% block footer %}{% endblock footer %}

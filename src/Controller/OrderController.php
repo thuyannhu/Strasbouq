@@ -20,9 +20,34 @@ class OrderController extends AbstractController
         }
     }
 
+    public function updateOrderStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $status = $_POST['status'];
+            $orderManager = new OrderManager();
+            $orderManager->updateOrderStatus($id, $status);
+            header('Location: /adminOrder');
+            exit;
+        }
+    }
+
+    public function deleteOrder()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $orderManager = new OrderManager();
+            $orderManager->deleteOrder($id);
+            header('Location: /adminOrder');
+            exit;
+        }
+    }
+
     public function adminOrder()
     {
-        return $this->twig->render('order/adminOrder.html.twig');
+        $orderManager = new OrderManager();
+        $orders = $orderManager->showAllOrder();
+        return $this->twig->render('order/adminOrder.html.twig', ['orders' => $orders]);
     }
 
     public function userOrder()
