@@ -1,45 +1,44 @@
 <nav>
-    <div class="nav-container">
-        <div id="nav-burger">
-            <div class="dropdown">
-                <button onclick="dropdownNav()" class="dropbtn">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="/">Accueil</a>
-                  <a href="/userpage">Clients</a>
-                  <a href="/products">Produits</a>
-                  <a href="#">Commandes</a>
+	<div class="nav-container">
+		<div id="nav-burger">
+			<div class="dropdown">
+				<button onclick="dropdownNav()" class="dropbtn">
+					<i class="fas fa-bars"></i>
+				</button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="/">Accueil</a>
+					<a href="/userpage">Clients</a>
+					<a href="/products">Produits</a>
+					<a href="#">Commandes</a>
 
 
+				</div>
+			</div>
+		</div>
 
-                </div>
-            </div>
-        </div>
+		<ul class="nav-item">
+			<a href="/userpage">Clients</a>
+		</ul>
+		<ul class="nav-item">
+			<a href="/products">Produits</a>
+		</ul>
+		<ul class="nav-item">
+			<a href="/adminOrder">Commandes</a>
 
-        <ul class="nav-item">
-            <a href="/userpage">Clients</a>
-        </ul>
-        <ul class="nav-item">
-            <a href="/products">Produits</a>
-        </ul>
-        <ul class="nav-item">
-            <a href="">Commandes</a>
-        </ul>
+		</ul>
 
-        <ul class="nav-item-logo">
-            <a href="/">
-              <img src="/assets/img/Strasbouq.png" class="me-2" height="80" alt="Logo" loading="lazy" />
-            </a>
-          </ul>
-    </div>
+		<ul class="nav-item-logo">
+			<a href="/">
+				<img src="/assets/img/Strasbouq.png" class="me-2" height="80" alt="Logo" loading="lazy"/>
+			</a>
+		</ul>
+	</div>
 </nav>
 
 <script type="text/javascript">
-    /* When the user clicks on the button,
+	/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function dropdownNav() {
-    document.getElementById("myDropdown").classList.toggle("show");
+document.getElementById("myDropdown").classList.toggle("show");
 }
 </script>
-  
