@@ -41,11 +41,28 @@ class OrderManager extends AbstractManager
          `user`.`phone`,
          `user`.`mail`,
          `order`.`price`,
-         `order`.`status`
+         `order`.`status`,
+         `user` . `isAdmin`
         FROM `" . self::TABLE . "` 
         INNER JOIN `user` ON `user`.`id` = `" . self::TABLE . "`.`User_idUser`");
 
         $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function showOrderByUser(string $user): array
+    {
+        $statement = $this->pdo->prepare("SELECT `order`.`id`,
+     `order`.`orderNumber`,
+     `order`.`date`,
+     `order`.`price`,
+     `order`.`status`,
+     `user` . `isAdmin`
+    FROM `" . self::TABLE . "` 
+    INNER JOIN `user` ON `user`.`id` = `" . self::TABLE . "`.`User_idUser`
+    WHERE `user`.`mail` = :userMail");
+
+        $statement->execute(['userMail' => $user]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
