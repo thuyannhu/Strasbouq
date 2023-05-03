@@ -8,7 +8,7 @@ class CompteController extends AbstractController
 {
     public function monCompte(): string
     {
-        // $_SESSION["user"]="admin@yahoo.fr";
+        //$_SESSION["user"]="admin@yahoo.fr";
         $email = $_SESSION["user"];
 
         $usermanager = new UserManager();
