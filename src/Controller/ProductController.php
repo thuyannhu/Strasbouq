@@ -25,7 +25,10 @@ class ProductController extends AbstractController
         $imageManager = new ImageManager();
         $images = $imageManager ->selectImages($id);
 
-        return $this->twig->render('Product/show.html.twig', ['product' => $productImage, 'images' => $images, 'id' => $id]);
+        return $this->twig->render(
+            'Product/show.html.twig',
+            ['product' => $productImage, 'images' => $images, 'id' => $id]
+        );
     }
 
     public function add(): ?string
@@ -55,7 +58,6 @@ class ProductController extends AbstractController
     public function edit(int $id): ?string
     {
         $productManager = new ProductManager();
-        $imageManager = new ImageManager();
         $product = $productManager->selectOneByIdByImages($id);
         $message = [];
 
