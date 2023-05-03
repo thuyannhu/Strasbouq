@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/thanks.css">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="block">
+            <h1>Votre demande :</h1>
+            <p>{{ message }}</p>
+        </div>
+    </main>
+{% endblock %}

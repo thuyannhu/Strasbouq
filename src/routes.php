@@ -23,5 +23,5 @@ return [
     'userpage' => ['UserpageController', 'userpage',],
     'connecter' => ['ConnecterController','connect',],
     'devis' => ['DevisController', 'devis',],
-    'historique' => ['historiqueController', 'historique',],
+    'thanks' => ['ThanksController', 'thanks',],
 ];

@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+use PDO;
+
 class DevisController extends AbstractController
 {
     public function devis(): string

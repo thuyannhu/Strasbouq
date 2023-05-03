@@ -1,57 +1,12 @@
 {% extends 'layout.html.twig' %}
+{% block title %}
+    {{ parent() }} Bouquets
+{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/devis.css">
 {% endblock %}
-{% block content %}
-<body>
-    <main>
-     <h1>Faire une demande de devis</h1>
-           <p>Vous voulez faire un devis ?! Vous êtes aux bons endroits remplit ce formulaire
-            et nous nous occuperons du reste !
-            </p> 
-        <img class="image" src="/../public/assets/img/cropped-5120-2880-108597.jpg" alt="">    
-        <form action ="" method = "POST">
-        <div class="block">
-            <div class="event">
-                <select name="" class="form-select" aria-label="Default select example">
-                    <option selected>Evènement</option>
-                    <option name="Mariage" value="1">Mariage</option>
-                    <option name="Anniversaire"value="2">Anniversaire</option>
-                    <option name="décès" value="3">Décès</option>
-                    <option name="Naissance" value="4">Naissance</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Nombre d'invité</option>
-                    <option value="1">0 - 20</option>
-                    <option value="2">20 - 100</option>
-                    <option value="3">100 - 300</option>
-                    <option value="4">300 ou +</option>
-                </select>
-            </div>
-            <select class="form-select_b" aria-label="Default select example">
-                <option selected>Thème</option>
-                <option value="1">Chaleureux</option>
-                <option value="2">Pure</option>
-                <option value="3">Jovial</option>
-            </select>
-            <div class="select">
-                <input class="form-input" type="date"> Date :</input>
-                <input class="form-input" aria-label="Default select example" type="number"> Saisir le budget :</input>
-            </div> 
-            <div class="form-outline">
-                <input type="text" id="typeText" class="form-control" />
-                <label class="form-label" for="typeText">Adresse :</label>
-            </div>
-            <div class="form-outline">
-                <input type="text" id="typeText" class="form-control" />
-                <label class="form-label" for="typeText">Saisir Texte :</label>
-            </div>
-            <button type="button" class="btn btn-success btn-rounded">Envoyer</button>
-        </div>
-        </form>
-        
-    </main>
-</body>
 
-{% endblock  %}
+{% block content %}
+    {% include 'Devis/_form.html.twig' %}
+{% endblock %}

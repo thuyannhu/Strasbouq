@@ -1,0 +1,53 @@
+<section>
+    <main>
+     <h1>Faire une demande de devis</h1>
+        <p>
+           Vous voulez faire un devis ? Vous êtes au bon endroit.
+            Remplissez ce formulaire et nous nous occuperons du reste !
+        </p>     
+        <form action="thanks" method= "POST">
+        <div class="block">
+            <div class="event">
+                <select name="evenement" class="form-select" aria-label="Default select example" required="required">
+                    <option selected name="Evènement">Evènement</option>
+                    <option value="Mariage">Mariage</option>
+                    <option value="Anniversaire">Anniversaire</option>
+                    <option value="Décès">Décès</option>
+                    <option value="Naissance">Naissance</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <select name="inviter" class="form-select" aria-label="Default select example" required="required">
+                    <option selected name="Nombre d'invité">Nombre d'invité</option>
+                    <option value="0 à 20">0 à 20</option>
+                    <option value="20 à 100">20 à 100</option>
+                    <option value="100 à 300">100 à 300</option>
+                    <option value="300ou+">300 ou +</option>
+                </select>
+            </div>
+            <select name="theme" class="form-select_b" aria-label="Default select example" required="required">
+                <option selected>Thème</option>
+                <option value="chaleureux">Chaleureux</option>
+                <option value="pure">Pur</option>
+                <option value="jovial">Jovial</option>
+            </select>
+            <div class="select">
+                <input name="date" class="form-input" type="date" required="required"> Date :</input>
+                <input name="budget" class="form-input" aria-label="Default select example" type="number" required="required"> Saisir le budget :</input>
+            </div> 
+            <div  class="form-outline">
+                <input name="adresse" type="text" id="typeText" class="form-control" required="required"/>
+                <label name="adresse" class="form-label" for="typeText" >Adresse :</label>
+            </div>
+            <div  class="form-outline">
+                <input name="text" type="text" id="typeText" class="form-control" required="required"/>
+                <label name="text" class="form-label" for="typeText" >Saisir Texte :</label>
+                </div>
+                    <label for="email">Adresse e-mail :</label>
+                    <input type="email" id="email" name="email"><br>
+
+            <button type="submit" class="btn btn-success btn-rounded">Envoyer</button>
+        </div>
+        </form>  
+    </main>
+</section>
+
