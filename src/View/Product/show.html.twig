@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block navbar %}
-{% include '/component/_navbarAdmin.html.twig' %}
+	{% include '/component/_navbarAdmin.html.twig' %}
 {% endblock navbar %}
 
 {% block content %}
@@ -23,39 +23,40 @@
   <tbody>
 <tr>
 
-               <td>
-        <div class="d-flex align-items-center">
-           <img
-              src="\{{ product.filename }}"
-              alt=""
-              style="width: auto; height: 200px"
-              ;>
-        </div>
-      </td>
-              <a href="/products/show?id={{ id }}">
-                <td class="fw-normal mb-1">{{ id }}</td>
-                <td class="fw-normal mb-1">{{ product.name }}</td>
-                <td class="fw-normal mb-1">{{ product.category }}</td>
-                <td class="fw-normal mb-1">{{ product.inventory }}</td>
-                {% if product.inventory > 5 %}
-                    <td><span class="badge badge-success rounded-pill d-inline">En stock</span></td>
-                {% endif %}
-                {% if product.inventory > 0 and product.inventory <= 5 %}
-                    <td><span class="badge badge-primary rounded-pill d-inline">Stock bas</span></td>
-                {% endif %}
-                {% if product.inventory == 0 %}
-                    <td><span class="badge badge-warning rounded-pill d-inline">Rupture</span></td>
-                {% endif %}
-                <td class="fw-normal mb-1">{{ product.price }}€</td>
-                <td>
-                <a href="/products/edit?id={{ id }}">
-                <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >Edit</button></a></td>
-            </tr>
-             </tbody>
+				<td>
+					<div class="d-flex align-items-center">
+						<img src="\{{ product.filename }}" alt="" style="width: auto; height: 200px" ;>
+					</div>
+				</td>
+				<a href="/products/show?id={{ id }}">
+					<td class="fw-normal mb-1">{{ id }}</td>
+					<td class="fw-normal mb-1">{{ product.name }}</td>
+					<td class="fw-normal mb-1">{{ product.category }}</td>
+					<td class="fw-normal mb-1">{{ product.inventory }}</td>
+					{% if product.inventory > 5 %}
+						<td>
+							<span class="badge badge-success rounded-pill d-inline">En stock</span>
+						</td>
+					{% endif %}
+					{% if product.inventory > 0 and product.inventory <= 5 %}
+						<td>
+							<span class="badge badge-primary rounded-pill d-inline">Stock bas</span>
+						</td>
+					{% endif %}
+					{% if product.inventory == 0 %}
+						<td>
+							<span class="badge badge-warning rounded-pill d-inline">Rupture</span>
+						</td>
+					{% endif %}
+					<td class="fw-normal mb-1">{{ product.price }}€</td>
+					<td>
+						<a href="/products/edit?id={{ id }}">
+							<button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Edit</button>
+						</a>
+					</td>
+				</tr>
+			</tr>
+		</tbody>
 
     <form action="/products/delete" method="POST">
         <input type="hidden" name="id" value="{{ product.id }}">
