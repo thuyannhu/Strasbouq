@@ -21,14 +21,11 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/show.html.twig', ['product' => $productImage, 'id' => $id]);
-    }
 
-    public function showsheet(int $id): string
-    {
-        $productManager = new ProductManager();
-        $productImage = $productManager->selectOneByIdByImages($id);
-        return $this->twig->render('Product/showsheet.html.twig', ['product' => $productImage]);
+        $imageManager = new ImageManager();
+        $images = $imageManager ->selectImages($id);
+
+        return $this->twig->render('Product/show.html.twig', ['product' => $productImage, 'images' => $images, 'id' => $id]);
     }
 
     public function add(): ?string
@@ -58,6 +55,7 @@ class ProductController extends AbstractController
     public function edit(int $id): ?string
     {
         $productManager = new ProductManager();
+        $imageManager = new ImageManager();
         $product = $productManager->selectOneByIdByImages($id);
         $message = [];
 
@@ -67,6 +65,8 @@ class ProductController extends AbstractController
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
                 $productManager->update($product);
+                $image = new ImageController();
+                $image->addImage($_FILES, $id);
                 header('Location: /products/show?id=' . $id);
                 return null;
             } else {

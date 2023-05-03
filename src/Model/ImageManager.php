@@ -18,4 +18,13 @@ class ImageManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+
+    public function selectImages (int $id) 
+    {
+        $statement = $this->pdo->prepare("SELECT filename FROM images WHERE Products_idProducts =:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
 }
