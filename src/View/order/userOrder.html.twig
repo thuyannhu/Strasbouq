@@ -1,0 +1,28 @@
+{% extends "layout.html.twig" %}
+{% block title %}Mes commandes
+{% endblock %}
+{% block content %}
+
+	<h1>Commandes</h1>
+
+	<table class="table align-middle mb-0 bg-white table-hover">
+		<thead class="bg-light">
+			<tr>
+				<th>Numéro de commande</th>
+				<th>Date</th>
+				<th>Prix</th>
+				<th>Statut</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for order in orders %}
+				<tr>
+					<th>{{order.orderNumber}}</th>
+					<th>{{order.date}}</th>
+					<th>{{order.price}}</th>
+					<th>{{order.status}}</th>
+				</tr>
+			{% endfor %}
+		</tbody>
+	{% endblock %}
+	{% block footer %}{% endblock %}

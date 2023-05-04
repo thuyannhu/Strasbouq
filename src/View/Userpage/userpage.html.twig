@@ -5,6 +5,9 @@
 {% endblock %}
 {% block title %}Utilisateur{% endblock %}
 
+{% block navbar %}
+{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
 
 {% block content %}
     <h1>Clients</h1>
@@ -21,6 +24,7 @@
             <th>Télephone</th>
             <th>Email</th>
             <th>Fidélité</th>
+            <th>SUPPRIMER</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +39,14 @@
                 <th>{{ user['phone'] }}</th>
                 <th>{{ user['mail'] }}</th>
                 <th>{{ user['fidelity'] }}</th>
+                <th>
+                    <form method="POST">
+                        <input type="hidden" name="id" value="{{ user['id'] }}">
+                        <button type="submit" class="btn btn-primary btn-floating">
+                        <i class="fas fa-trash-can"></i>
+                        </button>
+                    </form>
+                </th>
             </tr>
         {% endfor %}
     </tbody>
