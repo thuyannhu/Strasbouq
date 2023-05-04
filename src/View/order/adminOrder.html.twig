@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}Commandes
+{% endblock %}
+{% block navbar %}
+	{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
+{% block content %}
+	<h1>Commandes</h1>
+
+	<table class="table table-hover align-middle mb-0 bg-white">
+		<thead class="bg-light">
+			<tr>
+				<th>Id</th>
+				<th>Numéro de commande</th>
+				<th>Date</th>
+				<th>Nom</th>
+				<th>Code postal</th>
+				<th>Ville</th>
+				<th>Télephone</th>
+				<th>Email</th>
+				<th>Prix</th>
+				<th>Statut</th>
+				<th>SUPPRIMER</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for order in orders %}
+				<tr>
+					<th>{{order.id}}</th>
+					<th>{{order.orderNumber}}</th>
+					<th>{{order.date}}</th>
+					<th>{{order.lastname}}</th>
+					<th>{{order.zipcode}}</th>
+					<th>{{order.city}}</th>
+					<th>{{order.phone}}</th>
+					<th>{{order.mail}}</th>
+					<th>{{order.price}}</th>
+					<th>
+						<form method="POST" action="order/updateOrderStatus">
+							<select name="status" class="btn">
+								{% if order.status != 'terminé' %}
+									<option class="btn" value="{{ order.status }}">{{ order.status }}</option>
+									<option class="btn" value="terminé">terminé</option>
+								{% else %}
+									<option class="btn" value="{{ order.status }}">{{ order.status }}</option>
+									<option class="btn" value="En cours">En cours</option>
+								{% endif %}
+							</select>
+							<button type="submit" class="btn btn-primary btn-floating">
+								<i class="fas fa-check"></i>
+							</button>
+							<input type="hidden" name="id" value="{{ order.id }}">
+						</form>
+					</th>
+					<th>
+						<form method="POST" action="order/deleteOrder">
+							<input type="hidden" name="id" value="{{order.id}}">
+							<button type="submit" class="btn btn-primary btn-floating">
+								<i class="fas fa-trash-can"></i>
+							</button>
+						</form>
+					</th>
+				</tr>
+			{% endfor %}
+		</tbody>
+	{% endblock %}
+	{% block footer %}{% endblock footer %}

@@ -25,7 +25,6 @@ class ProductManager extends AbstractManager
         images ON products.id=images.Products_idProducts WHERE products.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-
         return $statement->fetch();
     }
 
@@ -37,7 +36,7 @@ class ProductManager extends AbstractManager
         `price`,
         `inventory`,
         `color`,
-        `category`) 
+        `category`)
         VALUES (:name, 
         :description, 
         :price, 
@@ -62,7 +61,8 @@ class ProductManager extends AbstractManager
         `price` = :price,
         `inventory` = :inventory,
         `color` = :color,
-        `category` = :category
+        `category` = :category,
+        `isTrending` = :isTrending
          WHERE id=:id");
         $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
@@ -71,7 +71,18 @@ class ProductManager extends AbstractManager
         $statement->bindValue('inventory', $product['inventory'], PDO::PARAM_INT);
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
+        $statement->bindValue('isTrending', $product['isTrending'], PDO::PARAM_INT);
 
         return $statement->execute();
+    }
+
+    public function deleteProducts(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE products FROM " . static::TABLE . " INNER JOIN 
+        images ON products.id=images.Products_idProducts WHERE products.id=:id");
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        $statement->execute();
     }
 }

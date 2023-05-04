@@ -1,0 +1,47 @@
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+
+
+.home-flex{
+    display: flex;;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h1 {
+  letter-spacing: 8px;
+  color: rgb(248, 247, 246);   
+  font-size: 80px;
+}
+
+h2 {
+  letter-spacing: 3px;
+  color:rgb(255, 255, 255);
+  font-size:30px;
+  opacity: 90%;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+
+a {
+    backdrop-filter: blur(10px);
+}
+.sebus{
+  height: 100%;
+}
