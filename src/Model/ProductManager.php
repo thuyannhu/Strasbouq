@@ -10,8 +10,8 @@ class ProductManager extends AbstractManager
 
     public function selectAllImages(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = "SELECT * FROM " . static::TABLE . " LEFT JOIN 
-        images ON products.id=images.Products_idProducts";
+        $query = "SELECT * FROM " . static::TABLE . " JOIN 
+        images ON products.id=images.Products_idProducts ";
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
@@ -36,19 +36,22 @@ class ProductManager extends AbstractManager
         `price`,
         `inventory`,
         `color`,
-        `category`)
+        `category`,
+        `isTrending`) 
         VALUES (:name, 
         :description, 
         :price, 
         :inventory, 
         :color, 
-        :category)");
+        :category,
+        :isTrending)");
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], PDO::PARAM_STR);
         $statement->bindValue('price', $product['price'], PDO::PARAM_INT);
         $statement->bindValue('inventory', $product['inventory'], PDO::PARAM_INT);
         $statement->bindValue('color', $product['color'], PDO::PARAM_STR);
         $statement->bindValue('category', $product['category'], PDO::PARAM_STR);
+        $statement->bindValue('isTrending', $product['isTrending'], PDO::PARAM_INT);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

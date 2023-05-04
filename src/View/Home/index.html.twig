@@ -30,7 +30,7 @@
                 <!--Grid row-->
               </div>
               <section class="mt-5 mx-4">
-              <h3>Nos bouquets du moment</h3>
+              <h3>Nos bouquets du moment</h3></br>
               <div class ="row">
 {% for image in images %}
   {% if image.isTrending > 0 %}
@@ -60,6 +60,7 @@
           {% endif %}
 				{% endfor %}
           </div>
+          {{dump(images)}}
 {% endblock %}
 
 
