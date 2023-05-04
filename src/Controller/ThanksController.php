@@ -8,7 +8,7 @@ class ThanksController extends AbstractController
     {
         $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $message = ' Merci' . $_POST['prenom'] . ' ' . $_POST['name']
+            $message = ' Merci' . ' ' . $_POST['prenom'] . ' ' . $_POST['name']
                 . ' de nous demander nos services pour ' . $_POST['evenement'] .
                 ' avec à peu près ' . $_POST['inviter'] . ' personnes avec un thème ' . $_POST['theme'] . ' !';
             $message .= " Vous avez un budget de : " . $_POST['budget'] . " euros, pour la date du : "
