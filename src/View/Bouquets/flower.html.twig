@@ -1,0 +1,101 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/bouquets.css">
+{% endblock %}
+{% block title %}Composez votre bouquet
+{% endblock %}
+{% block content %}
+	<main>
+		<div class="container-fluid">
+
+			<div
+				class="row">
+
+				<!-- Contenu principal sur la moitié gauche de l'écran -->
+				<div class="col-md-6">
+
+					<h2>Produits</h2>
+
+					<!-- Affichage de 3 cards par ligne -->
+					<div class="row">
+
+						<div class="col-md-4 mb-3">
+							<div class="card">
+								<img class="card-img-top" src="https://via.placeholder.com/150" alt="Image produit">
+								<div class="card-body">
+									<h5 class="card-title">Produit 1</h5>
+									<p class="card-text">Prix : 10 €</p>
+									<a href="#" class="btn btn-primary">
+										<i class="fa fa-shopping-cart"></i>
+										Ajouter au panier</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 mb-3">
+							<div class="card">
+								<img class="card-img-top" src="https://via.placeholder.com/150" alt="Image produit">
+								<div class="card-body">
+									<h5 class="card-title">Produit 2</h5>
+									<p class="card-text">Prix : 20 €</p>
+									<a href="#" class="btn btn-primary">
+										<i class="fa fa-shopping-cart"></i>
+										Ajouter au panier</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 mb-3">
+							<div class="card">
+								<img class="card-img-top" src="https://via.placeholder.com/150" alt="Image produit">
+								<div class="card-body">
+									<h5 class="card-title">Produit 3</h5>
+									<p class="card-text">Prix : 30 €</p>
+									<a href="#" class="btn btn-primary">
+										<i class="fa fa-shopping-cart"></i>
+										Ajouter au panier</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- ... et ainsi de suite pour les autres produits -->
+
+					</div>
+
+				</div>
+
+				<!-- Panier sur la droite de l'écran -->
+				<div class="col-md-6">
+
+					<h2>Panier</h2>
+
+					<ul class="list-group">
+
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Produit 1
+							<span class="badge badge-primary badge-pill">1</span>
+						</li>
+
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Produit 2
+							<span class="badge badge-primary badge-pill">2</span>
+						</li>
+
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Produit 3
+							<span class="badge badge-primary badge-pill">1</span>
+						</li>
+
+					</ul>
+
+					<p>Total : 60 €</p>
+					<a href="#" class="btn btn-primary">
+						<i class="fa fa-shopping-cart"></i>
+						Valider le panier</a>
+				</div>
+			</div>
+		</div>
+
+	</main>
+{% endblock %}

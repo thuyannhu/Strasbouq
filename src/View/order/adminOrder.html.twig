@@ -10,7 +10,7 @@
 {% block content %}
 	<h1>Commandes</h1>
 
-	<table class="table align-middle mb-0 bg-white">
+	<table class="table table-hover align-middle mb-0 bg-white">
 		<thead class="bg-light">
 			<tr>
 				<th>Id</th>
@@ -40,13 +40,13 @@
 					<th>{{order.price}}</th>
 					<th>
 						<form method="POST" action="order/updateOrderStatus">
-							<select name="status">
+							<select name="status" class="btn">
 								{% if order.status != 'terminé' %}
-									<option value="{{ order.status }}">{{ order.status }}</option>
-									<option value="terminé">terminé</option>
+									<option class="btn" value="{{ order.status }}">{{ order.status }}</option>
+									<option class="btn" value="terminé">terminé</option>
 								{% else %}
-									<option value="{{ order.status }}">{{ order.status }}</option>
-									<option value="En cours">En cours</option>
+									<option class="btn" value="{{ order.status }}">{{ order.status }}</option>
+									<option class="btn" value="En cours">En cours</option>
 								{% endif %}
 							</select>
 							<button type="submit" class="btn btn-primary btn-floating">
