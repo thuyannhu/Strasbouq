@@ -7,22 +7,6 @@ use App\Service\Image;
 
 class ImageController extends AbstractController
 {
-    // public function index(): string
-    // {
-    //     $imageManager = new ImageManager();
-    //     $images = $imageManager->selectAll('name');
-
-    //     return $this->twig->render('Product/index.html.twig', ['images' => $images]);
-    // }
-
-    // public function showImage(int $id): string
-    // {
-    //     $imageManager = new ImageManager();
-    //     $image = $imageManager->selectOneById($id);
-
-    //     return $this->twig->render('Product/show.html.twig', ['image' => $image]);
-    // }
-
     public function addImage($image, $productId): ?string
     {
         $authorizedExtensions = ['jpg','jpeg','png'];
