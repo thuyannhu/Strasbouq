@@ -14,7 +14,17 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $productImage = $productManager->selectAllImages('images.Products_idProducts');
 
-        return $this->twig->render('Product/index.html.twig', ['images' => $productImage]);
+        $newImage = [];
+        $precedent = 0;
+        foreach ($productImage as $image) {
+            if ($image['Products_idProducts'] != $precedent) {
+                $newImage[] = $image;
+            }
+            $precedent = $image['Products_idProducts'];
+        }
+
+
+        return $this->twig->render('Product/index.html.twig', ['images' => $newImage]);
     }
 
     public function show(int $id): string

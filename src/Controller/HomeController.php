@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Model\ProductManager;
 use App\Controller\BouquetsController;
 
-
 class HomeController extends AbstractController
 {
     /**
@@ -21,7 +20,15 @@ class HomeController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
+        $newImage = [];
+        $precedent = 0;
+        foreach ($productImage as $image) {
+            if ($image['Products_idProducts'] != $precedent) {
+                $newImage[] = $image;
+            }
+            $precedent = $image['Products_idProducts'];
+        }
 
-        return $this->twig->render('Home/index.html.twig', ['images' => $productImage]);
+        return $this->twig->render('Home/index.html.twig', ['images' => $newImage]);
     }
 }

@@ -10,8 +10,8 @@ class ProductManager extends AbstractManager
 
     public function selectAllImages(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = "SELECT * FROM " . static::TABLE . " JOIN 
-        images ON products.id=images.Products_idProducts ";
+        $query = "SELECT * FROM " . static::TABLE . " LEFT JOIN 
+        images ON products.id=images.Products_idProducts";
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
