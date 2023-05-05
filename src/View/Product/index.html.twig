@@ -68,7 +68,8 @@
                     </button>
                     </a>
                  </td>
-              <td>
+                 {% if image.isTrending == 0 %}
+                 <td>
                  <form action="/products/trending" method="POST">
                     <input type="hidden" name="id" value="{{ image.Products_idProducts }}">
                     <button type="submit" class="btn btn-primary btn-floating">
@@ -76,6 +77,21 @@
                     </button>
                 </form>
                 </td>
+                {% endif %}
+                {% if image.isTrending == 1 %}
+              <td>
+                <button
+                type="button"
+                class="btn btn-primary btn-floating"
+                data-mdb-container="body"
+                data-mdb-toggle="popover"
+                data-mdb-placement="top"
+                data-mdb-content="Le produit a déjà été ajouté en vedette"
+                >
+                <i class="fas fa-star"></i>
+                </button>
+                </td>
+                {% endif %}
                 <td>
                     <a href="/products/edit?id={{ image.Products_idProducts }}">
                     <button type="button" class="btn btn-primary btn-floating">

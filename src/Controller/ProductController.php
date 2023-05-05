@@ -70,6 +70,7 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdByImages($id);
         $message = [];
+ 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
@@ -80,7 +81,7 @@ class ProductController extends AbstractController
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
                 header('Location: /products/show?id=' . $id);
-                return null;
+                return null;       
             } else {
                 $message = $this->addErrorsToMessage($errors, $message);
             }

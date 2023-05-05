@@ -10,7 +10,7 @@ class ProductManager extends AbstractManager
 
     public function selectAllImages(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = "SELECT * FROM " . static::TABLE . " LEFT JOIN 
+        $query = "SELECT * FROM " . static::TABLE . " INNER JOIN 
         images ON products.id=images.Products_idProducts";
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
@@ -25,7 +25,7 @@ class ProductManager extends AbstractManager
         images ON products.id=images.Products_idProducts WHERE products.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     public function insert(array $product): int
