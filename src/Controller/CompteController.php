@@ -8,12 +8,12 @@ class CompteController extends AbstractController
 {
     public function monCompte(): string
     {
-        //$_SESSION["user"]="admin@yahoo.fr";
+        // $_SESSION["user"]="admin@yahoo.fr";
         $email = $_SESSION["user"];
 
         $usermanager = new UserManager();
         $id = $usermanager->searchUser($email, "id");
-        $data = $usermanager->selectOneById($id[0]['id']);
+        $data = $usermanager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (count($_POST) < 1) {

@@ -1,7 +1,9 @@
 a{
     text-decoration: none; 
+    color: black;
     
 }
+
 
 
 /* formulaire */
@@ -10,7 +12,7 @@ a{
     border: 1px solid;
     border-radius: 8px;
     padding: 0 50px 0 50px;
-    background: rgb(250, 232, 232);
+   background-color: #ffffff;
 }
     
 .contactez-nous > h1 {
@@ -35,7 +37,7 @@ form div > label {
 }
     
 form div > input, form div > select, form div > textarea {
-    background: #f0e9e9;
+
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -108,5 +110,6 @@ main {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 40px;
+    background-color: #fffdf4;
 }
 
