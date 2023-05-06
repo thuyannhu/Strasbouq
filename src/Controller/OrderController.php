@@ -52,6 +52,8 @@ class OrderController extends AbstractController
 
     public function userOrder()
     {
-        return $this->twig->render('order/userOrder.html.twig');
+        $orderManager = new OrderManager();
+        $orders = $orderManager->showOrderByUser($_SESSION['user']);
+        return $this->twig->render('order/userOrder.html.twig', ['orders' => $orders]);
     }
 }
