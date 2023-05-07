@@ -1,67 +1,118 @@
 {% extends 'layout.html.twig' %}
-
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/productshow.css">
+{% endblock %}
 {% block navbar %}
 	{% include '/component/_navbarAdmin.html.twig' %}
 {% endblock navbar %}
 
 {% block content %}
-	<h1>{{ product.name }}</h1>
-	<table class="table align-middle mb-0 bg-white">
-		<thead class="bg-light">
-			<tr>
-				<th>Image</th>
-				<th>Id</th>
-				<th>Nom</th>
-				<th>Catégorie</th>
-				<th>Inventaire</th>
-				<th>Niveau de stock</th>
-				<th>Prix</th>
-				<th>Modifier</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
+	<div class="d-flex content flex-column align-items-center">
+		<div class="row">
+			<div class="col-lg-8 d-flex justify-content-around align-items-center content">
+				<div id="carouselBasicExample" class="carousel slide carousel-fade w-75" data-mdb-ride="carousel">
 
-				<td>
-					<div class="d-flex align-items-center">
-						<img src="\{{ product.filename }}" alt="" style="width: auto; height: 200px" ;>
+					{% if images|length == 1 %}
+						<div class="carousel-indicators">
+							<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						</div>
+
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="\{{images.0|join(', ')}}" class="w-100" alt="Sunset Over the City"/>
+							</div>
+						</div>
+
+			{% endif %}
+			{% if images|length == 2 %}
+				<!-- Indicators -->
+				<div class="carousel-indicators">
+					<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+				</div>
+
+				<!-- Inner -->
+				<div
+					class="carousel-inner">
+
+					<!-- Single item -->
+					<div class="carousel-item active">
+						<img src="\{{images.0|join(', ')}}" class="w-100" alt="Sunset Over the City"/>
 					</div>
-				</td>
-				<a href="/products/show?id={{ id }}">
-					<td class="fw-normal mb-1">{{ id }}</td>
-					<td class="fw-normal mb-1">{{ product.name }}</td>
-					<td class="fw-normal mb-1">{{ product.category }}</td>
-					<td class="fw-normal mb-1">{{ product.inventory }}</td>
-					{% if product.inventory > 5 %}
-						<td>
-							<span class="badge badge-success rounded-pill d-inline">En stock</span>
-						</td>
-					{% endif %}
-					{% if product.inventory > 0 and product.inventory <= 5 %}
-						<td>
-							<span class="badge badge-primary rounded-pill d-inline">Stock bas</span>
-						</td>
-					{% endif %}
-					{% if product.inventory == 0 %}
-						<td>
-							<span class="badge badge-warning rounded-pill d-inline">Rupture</span>
-						</td>
-					{% endif %}
-					<td class="fw-normal mb-1">{{ product.price }}€</td>
-					<td>
-						<a href="/products/edit?id={{ id }}">
-							<button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Edit</button>
-						</a>
-					</td>
-				</tr>
-			</tr>
-		</tbody>
 
-		<form action="/products/delete" method="POST">
-			<input type="hidden" name="id" value="{{ product.id }}">
-			<button>Delete</button>
-		</form>
-		<a href="/products">Back</a>
+					<!-- Single item -->
+					<div class="carousel-item">
+						<img src="\{{images.1|join(', ')}}" class="d-block w-100" alt="Canyon at Nigh"/>
+					</div>
 
-	{% endblock %}
-	{% block footer %}{% endblock footer %}
+				</div>
+
+				<!-- Controls -->
+				<button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			{% endif %}
+
+			{% if images|length == 3 %}
+				<!-- Indicators -->
+				<div class="carousel-indicators">
+					<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+
+				<div
+					class="carousel-inner">
+
+					<!-- Single item -->
+					<div class="carousel-item active">
+						<img src="\{{images.0|join(', ')}}" class="w-100" alt="Sunset Over the City"/>
+					</div>
+
+					<!-- Single item -->
+					<div class="carousel-item">
+						<img src="\{{images.1|join(', ')}}" class="d-block w-100" alt="Canyon at Nigh"/>
+					</div>
+
+					<!-- Single item -->
+					<div class="carousel-item">
+						<img src="\{{images.2|join(', ')}}" class="d-block w-100" alt="Canyon at Nigh"/>
+					</div>
+
+				</div>
+
+				<!-- Controls -->
+				<button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-lg-4 align-items-center d-flex">
+		<section class="me-5">
+			<h1>{{product[0].name}}</h1>
+			</br>
+			<h2>
+				{{product[0].price}}€</h2>
+				</br>
+			<h3>Description</h3>
+		</br>
+		{{product[0].description}}</p>
+		</br>
+
+
+	<a href="?add_to_cart={{ image.Products_idProducts }}" class="btn btn-primary btn-lg">
+		Ajouter au panier
+	</a>
+</section></div>{% endblock %}{% block footer %}{% endblock footer %}

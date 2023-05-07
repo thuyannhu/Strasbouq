@@ -1,86 +1,88 @@
-{# TODO : manage errors display #}
-<div class="row d-flex align-items-center justify-content-center my-5">
-  <div class="col-md-6">
-    <div class="card mb-8">
-      <div class="card-header py-4">
-        <h5 class="mb-0">Ajouter un produit</h5>
-      </div>
-      <div class="card-body">
-        <form method="post" enctype="multipart/form-data">
-         <div class="col-5">
-    <!-- Product name -->
-    <input type="hidden" value="{{ id }}" name="id">
-    <div class="form-outline mb-4">
-      <input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" placeholder="Nom" />
-      <label class="form-label" for="name">Nom</label>
-    </div>
-     </div>
-          <!-- Product description -->
-          <div class="form-outline mb-4">
-            <textarea name="description" class="form-control" id="description" rows="6">{{ product.description }}</textarea>
-            <label class="form-label" for="description">Description du produit</label>
-          </div>
+<div class="row d-flex align-items-center justify-content-center my-1">
+	<div class="col-md-6">
+		<div class="card mb-8">
+			<div class="card-body">
+				<form method="post" enctype="multipart/form-data">
+					<div
+						class="col-5">
+						<!-- Product name -->
+						<input type="hidden" value="{{ id }}" name="id">
+						<div class="mb-4">
+							<label class="form-label" for="name">Nom</label>
+							<input type="text" class="form-control" value="{{ product[0].name }}" name="name" id="name" placeholder="Nom"/>
+						</div>
+					</div>
+					<!-- Product description -->
+					<div class="mb-4">
+						<label class="form-label" for="description">Description du produit</label>
+						<textarea name="description" class="form-control" id="description" rows="6">{{ product[0].description }}</textarea>
+					</div>
 
- <div class="row">
-  <div class="col-3">
-    <!-- Product price -->
-    <div class="form-outline mb-3">
-      <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" placeholder="Prix" />
-      <label class="form-label" for="price">Prix</label>
-    </div>
-  </div>
-  <div class="col-3">
-    <!-- Product inventory -->
-    <div class="form-outline mb-3">
-      <input type="text" class="form-control" value="{{ product.inventory }}" name="inventory" id="inventory" placeholder="Stock" />
-      <label class="form-label" for="inventory">Stock</label>
-    </div>
-  </div>
-<div class="col-3">
-    <select name="color" id="color" class="form-control" value="{{ product.color }}">
-        <option value="">Couleur</option>
-        <option value="rouge" {% if product.color == 'rouge' %} selected {% endif %}>rouge</option>
-        <option value="orange" {% if product.color == 'orange' %} selected {% endif %}>orange</option>
-        <option value="jaune" {% if product.color == 'jaune' %} selected {% endif %}>jaune</option>
-        <option value="vert" {% if product.color == 'vert' %} selected {% endif %}>vert</option>
-        <option value="bleu" {% if product.color == 'bleu' %} selected {% endif %}>bleu</option>
-        <option value="violet" {% if product.color == 'violet' %} selected {% endif %}>violet</option>
-        <option value="rose" {% if product.color == 'rose' %} selected {% endif %}>rose</option>
-        <option value="blanc" {% if product.color == 'blanc' %} selected {% endif %}>blanc</option>
-    </select>
-    </div>
-    <div class="col-3">
-    <select name="category" id="category" class="form-control " value="{{ product.category }}">
-        <option value="">Catégorie</option>
-        <option value="bouquet" {% if product.category == 'bouquet' %} selected {% endif %}>Bouquet</option>
-        <option value="fleur coupée"  {% if product.category == 'fleur coupée' %} selected {% endif %}>Fleur coupée</option>
-    </select>
-    </div>
+					<div
+						class="row">
+						<!-- Product price -->
+						<div class="col-2 mb-3">
+							<label class="form-label" for="price">Prix</label>
+							<input type="text" class="form-control" value="{{ product[0].price }}" name="price" id="price" placeholder="Prix"/>
+						</div>
+
+						<!-- Product inventory -->
+						<div class="col-2 mb-3">
+							<label class="form-label" for="inventory">Stock</label>
+							<input type="text" class="form-control" value="{{ product[0].inventory }}" name="inventory" id="inventory" placeholder="Stock"/>
+						</div>
+
+						<!-- Product color -->
+            {# Color selected by default when editing a product is product color #}
+						<div class="col-2">
+							<label class="form-label select-label" for="color">Couleur</label>
+							<select name="color" id="color" class="form-control" value="{{ product[0].color }}">
+								<option value="">Couleur</option>
+								<option value="rouge" {% if product[0].color == 'rouge' %} selected {% endif %}>rouge</option>
+								<option value="orange" {% if product[0].color == 'orange' %} selected {% endif %}>orange</option>
+								<option value="jaune" {% if product[0].color == 'jaune' %} selected {% endif %}>jaune</option>
+								<option value="vert" {% if product[0].color == 'vert' %} selected {% endif %}>vert</option>
+								<option value="bleu" {% if product[0].color == 'bleu' %} selected {% endif %}>bleu</option>
+								<option value="violet" {% if product[0].color == 'violet' %} selected {% endif %}>violet</option>
+								<option value="rose" {% if product[0].color == 'rose' %} selected {% endif %}>rose</option>
+								<option value="blanc" {% if product[0].color == 'blanc' %} selected {% endif %}>blanc</option>
+								<option value="multicolore" {% if product[0].color == 'multicolore' %} selected {% endif %}>multicolore</option>
+
+							</select>
+						</div>
+
+						<!-- Product cactegory -->
+						<div class="col-3">
+							<label class="form-label select-label" for="category">Catégorie</label>
+							<select name="category" id="category" class="form-control " value="{{ product[0].category }}">
+								<option value="bouquet" {% if product[0].category == 'bouquet' %} selected {% endif %}>Bouquet</option>
+								<option value="fleur coupée" {% if product[0].category == 'fleur coupée' %} selected {% endif %}>Fleur coupée</option>
+							</select>
+						</div>
+						<!-- Product Trending status -->
+            {# 'isTrending' value selected by default when editing a product is product 'isTrending' value  #}
+
+						<div class="col-3 mb-3">
+							<label class="form-label select-label" for="isTrending">Mettre en vedette</label>
+							<select name="isTrending" id="isTrending" class="form-control " value="{{ product[0].isTrending }}">
+								<option value="1" {% if product[0].isTrending == '1' %} selected {% endif %}>oui</option>
+								<option value="0" {% if product[0].isTrending == '0' %} selected {% endif %}>non</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Add image to product  -->
+					<div class="custom-file mb-3">
+						<input type="file" class="custom-file-input" value="{{ product[0].image }}" name="image" id="imageUpload"/>
+						<label class="custom-file-label" for="imageUpload">Ajouter une image</label>
+					</div>
+
+					<div class="d-flex align-items-center justify-content-end">
+						<button type="submit" class="btn btn-primary">Valider</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
 </div>
-   <div class="custom-file mb-3">    
-    <input type="file" class="custom-file-input" value="{{ product.image }}" name="image" id="imageUpload"/>
-    <label class="custom-file-label" for="imageUpload">Ajouter une image</label>    
-    </div>
-
-    {# <div class="form-check">
-  <input class="form-check-input" type="checkbox" name="isTrending" value="1" id="isTrending" />
-  <label class="form-check-label" for="isTrending">Mettre en vedette</label>
-  </div> #}
-
-      <div class="col-3">
-    <select name="isTrending" id="isTrending" class="form-control " value="{{ product.isTrending }}">
-        <option value="">Voulez vous rajouter le produit sur la page d'accueil?</option>
-        <option value= 1 {% if product.isTrending == '1' %} selected {% endif %}>oui</option>
-        <option value= 0  {% if product.isTrending == '0' %} selected {% endif %}>non</option>
-    </select>
-    </div>
-
-    <div class="d-flex align-items-center">
-  <button type="submit" class="btn btn-primary">Ajouter</button>
-  </div>
-
-
-        </form>
-      </div>
-    </div>
-  </div>

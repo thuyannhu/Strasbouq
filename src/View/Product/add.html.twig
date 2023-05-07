@@ -1,25 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block navbar %}
-{% include '/component/_navbarAdmin.html.twig' %}
+	{% include '/component/_navbarAdmin.html.twig' %}
 {% endblock navbar %}
 
 {% block content %}
-    {% if message is not empty %}
-                <div
-                    class="border p-5">
-                    {% for line in message %}
-                    <div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
-                        {{ line }}
-                        </div>
-                        <br>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            {% include 'Product/_form.html.twig' %}
-    
+
+{# Displays error message if exists #}
+	{% if message is not empty %}
+		<div class="border p-5">
+			{% for line in message %}
+				<div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
+					{{ line }}
+				</div>
+				<br>
+			{% endfor %}
+		</div>
+	{% endif %}
+	{% include 'Product/_form.html.twig' %}
+
 {% endblock %}
 
 
 {% block footer %}{% endblock footer %}
-
