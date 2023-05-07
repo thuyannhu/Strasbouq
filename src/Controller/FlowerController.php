@@ -25,6 +25,10 @@ class FlowerController extends AbstractController
         $catalogManager = new CatalogManager();
         $resultFilter = $this->filterFlower();
         $flowers = [];
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+
         if ($resultFilter) {
             $flowers = $resultFilter;
         } else {
