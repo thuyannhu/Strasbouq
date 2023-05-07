@@ -9,11 +9,14 @@ use App\Controller\ImageController;
 
 class ProductController extends AbstractController
 {
+    // Displays all products with their first image
     public function index(): string
-    {
+    {   
+        // Selects all products with all their images
         $productManager = new ProductManager();
         $productImage = $productManager->selectAllImages('images.Products_idProducts');
 
+        // Checks if product image id is the same as the precedent one to avoid duplicate image
         $newImage = [];
         $precedent = 0;
         foreach ($productImage as $image) {
@@ -23,15 +26,17 @@ class ProductController extends AbstractController
             $precedent = $image['Products_idProducts'];
         }
 
-
         return $this->twig->render('Product/index.html.twig', ['images' => $newImage]);
     }
 
+    // Displays product with chosen $id with all images
     public function show(int $id): string
     {
+        // Selects chosen product data
         $productManager = new ProductManager();
         $productImage = $productManager->selectOneByIdByImages($id);
 
+        // Selects chosen product image data
         $imageManager = new ImageManager();
         $images = $imageManager ->selectImages($id);
 
@@ -41,17 +46,22 @@ class ProductController extends AbstractController
         );
     }
 
+    // Adds a new product in db
     public function add(): ?string
     {
         $message = [];
-
+        // Checks if form data is compliant
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
 
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
+
+                // Inserts product data in db
                 $productManager = new ProductManager();
                 $id = $productManager->insert($product);
+
+                // Inserts image data in db
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
 
@@ -65,20 +75,29 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/add.html.twig', ['message' => $message]);
     }
 
+    // Modify product with chosen $id
     public function edit(int $id): ?string
     {
+        // Selects chosen product data
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdByImages($id);
-        $message = [];
 
+        // Checks if form data is compliant
+        $message = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
 
+            
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
+
+                // Updates product data in db
                 $productManager->update($product);
+
+                // Inserts new image in db
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
+
                 header('Location: /products/show?id=' . $id);
                 return null;
             } else {
@@ -92,6 +111,7 @@ class ProductController extends AbstractController
         );
     }
 
+    // Deletes product with chosen $id
     public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -102,6 +122,7 @@ class ProductController extends AbstractController
         }
     }
 
+    // Adds product with chosen $id to homepage "Trending products" display
     public function trending(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -112,6 +133,7 @@ class ProductController extends AbstractController
         }
     }
 
+    // Translates form fields name in French
     private function translate($input)
     {
         $translated = [
@@ -122,6 +144,7 @@ class ProductController extends AbstractController
         return $translated[$input];
     }
 
+    // Checks if a firm field has been filed, else adds an error message
     private function checkInput($input, $errors)
     {
         if (!isset($_POST[$input]) || trim($_POST[$input]) === '') {
@@ -130,6 +153,7 @@ class ProductController extends AbstractController
         return $errors;
     }
 
+    // Checks if an image has been added to form, else adds an error message
     private function checkImage($input, $errors)
     {
         if (!isset($_FILES['image'][$input]) || trim($_FILES['image'][$input]) === '') {
@@ -138,6 +162,7 @@ class ProductController extends AbstractController
         return $errors;
     }
 
+    // Implement checks on all form fields
     private function globalCheck()
     {
         $errors = [];
@@ -151,6 +176,7 @@ class ProductController extends AbstractController
         return $errors;
     }
 
+    // Stacks errors in $message
     private function addErrorsToMessage($errors, $message)
     {
         foreach ($errors as $error) {

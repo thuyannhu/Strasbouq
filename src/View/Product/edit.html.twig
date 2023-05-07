@@ -1,109 +1,68 @@
 {% extends 'layout.html.twig' %}
 
 {% block navbar %}
-{% include '/component/_navbarAdmin.html.twig' %}
+	{% include '/component/_navbarAdmin.html.twig' %}
 {% endblock navbar %}
 
 {% block content %}
-    <h1>Modifier {{ product[0].name }}</h1>
-    {% if message is not empty %}
-                    <div
-                        class="border p-5">
-                        {% for line in message %}
-                        <div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
-                            {{ line }}
-                            </div>
-                            <br>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+	<h1>Modifier
+		{{ product[0].name }}</h1>
+	{% if message is not empty %}
+		<div class="border p-5">
+			{% for line in message %}
+				<div class="alert bg-warning p-2 text-white w-25" role="alert" data-mdb-color="primary">
+				{{ line }}
+				</div>
+				<br>
+			{% endfor %}
+		</div>
+	{% endif %}
 
-    {% if product|length == 1 %}
-   
-    <div class="d-flex justify-content-around"> 
-        <div class="d-flex justify-content-around flex-column align-items-center">
-            
-                <img
-                    src="\{{product[0].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
-                <p>Image actuelle du produit<p>
-        </div>
-    </div>
+	{% if product|length == 1 %}
+		<div class="d-flex justify-content-around">
+			<div class="d-flex justify-content-around flex-column align-items-center">
+				<img src="\{{product[0].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image actuelle du produit</p>
+				<p></p>
+			</div>
+		</div>
+	{% endif %}
 
-    {% endif %}
+	{% if product|length == 2 %}
+		<div class="d-flex justify-content-center">
+			<div class="d-flex justify-content-around flex-column align-items-center p-4">
+				<img src="\{{product[0].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image 1</p>
+				<p></p>
+			</div>
+			<div class="d-flex justify-content-around flex-column align-items-center p-4">
+				<img src="\{{product[1].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image 2</p>
+				<p></p>
+			</div>
+		</div>
+	{% endif %}
 
-    {% if product|length == 2 %}
-   
-    <div class="d-flex justify-content-center"> 
-        <div class="d-flex justify-content-around flex-column align-items-center p-4">
-            
-                <img
-                    src="\{{product[0].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
+	{% if product|length == 3 %}
+		<div class="d-flex justify-content-center">
+			<div class="d-flex justify-content-around flex-column align-items-center p-4">
+				<img src="\{{product[0].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image 1</p>
+				<p></p>
+			</div>
+			<div class="d-flex justify-content-around flex-column align-items-center p-4">
+				<img src="\{{product[1].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image 2</p>
+				<p></p>
+			</div>
+			<div class="d-flex justify-content-around flex-column align-items-center p-4">
+				<img src="\{{product[2].filename}}" alt="" style="width: auto; height: 200px" ;>
+				<p>Image 3</p>
+				<p></p>
+			</div>
+		</div>
+	{% endif %}
 
-                
-                <p>Image 1<p>
-        </div>
-        <div class="d-flex justify-content-around flex-column align-items-center p-4">
-            
-                <img
-                    src="\{{product[1].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
-
-                
-                <p>Image 2<p>
-        </div>
-    </div>
-
-    {% endif %}
-
-    {% if product|length == 3 %}
-   
- <div class="d-flex justify-content-center"> 
-        <div class="d-flex justify-content-around flex-column align-items-center p-4">
-            
-                <img
-                    src="\{{product[0].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
-
-                
-                <p>Image 1<p>
-        </div>
-        <div class="d-flex justify-content-around flex-column align-items-center p-4">
-            
-                <img
-                    src="\{{product[1].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
-
-                
-                <p>Image 2<p>
-        </div>
-
-        <div class="d-flex justify-content-around flex-column align-items-center p-4">
-            
-                <img
-                    src="\{{product[2].filename}}"
-                    alt=""
-                    style="width: auto; height: 200px"
-                ;>
-
-                
-                <p>Image 3<p>
-        </div>
-    </div>
-    {% endif %}
-
-    {% include 'product/_form.html.twig' %}
-    <a href="/products/show?id={{ product[0].Products_idProducts}}">Back</a>
+	{% include 'product/_form.html.twig' %}
+	<a href="/products/show?id={{ product[0].Products_idProducts}}">Back</a>
 {% endblock %}
-
