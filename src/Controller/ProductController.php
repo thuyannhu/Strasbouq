@@ -6,6 +6,7 @@ use App\Model\ProductManager;
 use App\Service\Image;
 use App\Model\ImageManager;
 use App\Controller\ImageController;
+use App\Controller\BouquetsController;
 
 class ProductController extends AbstractController
 {
@@ -39,6 +40,16 @@ class ProductController extends AbstractController
         // Selects chosen product image data
         $imageManager = new ImageManager();
         $images = $imageManager ->selectImages($id);
+
+
+        // If icon is clicked, product is added to cart
+        $bouquetsController = new BouquetsController();
+
+        if (isset($_GET['add_to_cart'])) {
+            $bouquetsController->addToCart();
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
 
         return $this->twig->render(
             'Product/show.html.twig',
