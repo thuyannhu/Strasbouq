@@ -20,7 +20,15 @@ class CartController extends AbstractController
             if (isset($_SESSION['cart'][$productId])) {
                 unset($_SESSION['cart'][$productId]);
             }
-            header('Location: /cart');
+
+            // Redirige l'utilisateur en fonction de la page actuelle
+            if (strpos($_SERVER['HTTP_REFERER'], '/cart') !== false) {
+                header('Location: /cart');
+            } elseif (strpos($_SERVER['HTTP_REFERER'], '/flower') !== false) {
+                header('Location: /flower');
+            } else {
+                header('Location: /');
+            }
             exit();
         }
     }

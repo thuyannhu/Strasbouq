@@ -6,8 +6,8 @@
 {% block title %}Composez votre bouquet
 {% endblock %}
 {% block content %}
-	{{ dump(flowers) }}
 	<main>
+		{% set total = 0 %}
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8">
@@ -43,22 +43,35 @@
 					<h2>Panier</h2>
 					<ul class="list-group">
 						<li class="list-group-item d-flex justify-content-between align-items-center">
-							Produit 1
+							<span>Article</span>
+							<span>Quantité</span>
+							<span>Prix</span>
+							<span>Suppr</span>
+						</li>
+					</li>
+					{% for item in cart %}
+						{% set total = total + (item.price * item.quantity) %}
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							<span>{{item.name}}</span>
+							<span>{{item.quantity}}</span>
+							<span>{{item.price * item.quantity}}€</span>
 							<span class="badge badge-pill">
 								<div class="col-md-1 col-lg-1 col-xl-1 text-end">
 									<a href="/cart/clearProduct?productId={{ item.id }}" class="text-muted">
 										<i class="fas fa-times"></i>
 									</a>
 								</div>
-							</span>
+							</li>
 						</li>
-					</ul>
-					<p>Total : 60 €</p>
-					<a href="/cart" class="btn btn-primary">
-						<i class="fa fa-shopping-cart"></i>
-						Voir mon panier</a>
-				</div>
-			</div>
-		</div>
-	</main>
-{% endblock %}
+					</span>
+				</li>
+			{% endfor %}
+		</ul>
+		<p>Total :
+			{{total}}
+			€</p>
+		<a href="/cart" class="btn btn-primary">
+			<i class="fa fa-shopping-cart"></i>
+			Voir mon panier</a>
+	</div>
+</div></div></main>{% endblock %}

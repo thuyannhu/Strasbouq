@@ -37,6 +37,9 @@ class FlowerController extends AbstractController
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         }
-        return $this->twig->render('Bouquets/flower.html.twig', ['flowers' => $flowers]);
+        return $this->twig->render(
+            'Bouquets/flower.html.twig',
+            ['flowers' => $flowers, 'cart' => $_SESSION['cart'], 'user' => $_SESSION['user']]
+        );
     }
 }
