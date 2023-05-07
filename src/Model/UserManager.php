@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Exception;
 use PDO;
 
 class UserManager extends AbstractManager
@@ -76,7 +77,11 @@ class UserManager extends AbstractManager
         $statement->bindValue('email', $email, PDO::PARAM_STR);
 
         $statement->execute();
-        return $statement->fetchAll();
+        try {
+            return $statement->fetchAll()[0][$nomCategorie];
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**

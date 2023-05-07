@@ -1,6 +1,4 @@
-body {
-    color: #e30909;
-}
+
 
 .rounded-circle{
     height: 30px !important;
@@ -13,9 +11,10 @@ body {
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
-
+    border-bottom: solid 4px rgb(176, 193, 176);
     width: 100vw;
     padding-right: 3vw;
+    background-color:#fffdf4;
 }
 
 .item-shop{
@@ -73,6 +72,9 @@ body {
         justify-content: space-between;
         padding-left: 30px;
         padding-right: 30px;
+        
     }
 }
+
+
 

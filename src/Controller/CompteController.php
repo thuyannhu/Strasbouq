@@ -13,7 +13,7 @@ class CompteController extends AbstractController
 
         $usermanager = new UserManager();
         $id = $usermanager->searchUser($email, "id");
-        $data = $usermanager->selectOneById($id[0]['id']);
+        $data = $usermanager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (count($_POST) < 1) {
