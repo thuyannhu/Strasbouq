@@ -11,7 +11,7 @@ class ProductController extends AbstractController
 {
     // Displays all products with their first image
     public function index(): string
-    {   
+    {
         // Selects all products with all their images
         $productManager = new ProductManager();
         $productImage = $productManager->selectAllImages('images.Products_idProducts');
@@ -87,7 +87,7 @@ class ProductController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->globalCheck();
 
-            
+
             if (empty($errors)) {
                 $product = array_map('trim', $_POST);
 

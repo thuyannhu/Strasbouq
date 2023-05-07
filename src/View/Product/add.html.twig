@@ -5,6 +5,8 @@
 {% endblock navbar %}
 
 {% block content %}
+
+{# Displays error message if exists #}
 	{% if message is not empty %}
 		<div class="border p-5">
 			{% for line in message %}

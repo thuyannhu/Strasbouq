@@ -32,8 +32,9 @@
 		<h3>Nos bouquets du moment</h3>
 	</br>
 	<div class="row">
-  
-		{% for image in images %}
+
+		{% for image in images %}  
+			{# Only displays image with 'isTrending' value = 1 #}
 			{% if image.isTrending > 0 %}
 
 				<div class="col-lg-4 col-md-12 mb-4">

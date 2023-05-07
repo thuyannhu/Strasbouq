@@ -17,7 +17,9 @@
 			{% endfor %}
 		</div>
 	{% endif %}
-
+	
+	{# Displays carrousel only if there are more than one image #}
+	{# Displays carrousel slides according to photo number #}
 	{% if product|length == 1 %}
 		<div class="d-flex justify-content-around">
 			<div class="d-flex justify-content-around flex-column align-items-center">

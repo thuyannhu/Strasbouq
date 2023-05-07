@@ -58,7 +58,7 @@ class ProductManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
-    
+
     // Modifies product data in db
     public function update(array $product): bool
     {

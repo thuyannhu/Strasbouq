@@ -50,6 +50,8 @@
 						<td class="fw-normal mb-1">{{ image.category }}</td>
 						<td class="fw-normal mb-1">{{ image.inventory }}</td>
 
+						{# Displays badge according to inventory level #}
+
 						{% if image.inventory > 5 %}
 							<td>
 								<span class="badge badge-success rounded-pill d-inline">En stock</span>
@@ -76,6 +78,9 @@
 								</button>
 							</a>
 						</td>
+
+						{# Displays image when product isTrending is set to  #}
+
 						{% if image.isTrending == 0 %}
 							<td>
 								<form action="/products/trending" method="POST">

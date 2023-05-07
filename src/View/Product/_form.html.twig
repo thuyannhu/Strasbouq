@@ -33,6 +33,7 @@
 						</div>
 
 						<!-- Product color -->
+            {# Color selected by default when editing a product is product color #}
 						<div class="col-2">
 							<label class="form-label select-label" for="color">Couleur</label>
 							<select name="color" id="color" class="form-control" value="{{ product[0].color }}">
@@ -57,6 +58,8 @@
 							</select>
 						</div>
 						<!-- Product Trending status -->
+            {# 'isTrending' value selected by default when editing a product is product 'isTrending' value  #}
+
 						<div class="col-3 mb-3">
 							<label class="form-label select-label" for="isTrending">Mettre en vedette</label>
 							<select name="isTrending" id="isTrending" class="form-control " value="{{ product[0].isTrending }}">
