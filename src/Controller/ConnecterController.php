@@ -41,6 +41,14 @@ class ConnecterController extends AbstractController
         return $errors;
     }
 
+    private function doublonEmail($errors)
+    {
+        if ($this->getPassword()) {
+            $errors['double'] = "Cet email existe déjà dans la base de donnée.";
+        }
+        return $errors;
+    }
+
     private function verificationGlobale()
     {
         $errors = [];
@@ -52,6 +60,7 @@ class ConnecterController extends AbstractController
         $errors = $this->verifierInformation('telephone', $errors);
         $errors = $this->verifierNumero($errors);
         $errors = $this->verifierInformation('email', $errors);
+        $errors = $this->doublonEmail($errors);
         $errors = $this->verifierInformation('password', $errors);
         $errors = $this->verifierPasswords($errors);
         return $errors;
@@ -67,7 +76,7 @@ class ConnecterController extends AbstractController
 
     private function isExistingUser($userPassword)
     {
-        if (isset($userPassword[0]['userPassword'])) {
+        if (isset($userPassword)) {
             return true;
         } else {
             return false;
@@ -76,7 +85,7 @@ class ConnecterController extends AbstractController
 
     private function isGoodPassword($userPassword)
     {
-        if ($_POST["password"] === $userPassword[0]['userPassword']) {
+        if ($_POST["password"] === $userPassword) {
             return true;
         } else {
             return false;

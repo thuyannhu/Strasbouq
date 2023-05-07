@@ -26,11 +26,32 @@ class CatalogManager extends AbstractManager
         return $allBouquets;
     }
 
+    public function showFlowers(): array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        LEFT JOIN images ON products.id=images.Products_idProducts 
+        WHERE category = 'fleur coupée'");
+        $statement->execute();
+        $allBouquets = $statement->fetchAll();
+        return $allBouquets;
+    }
+
     public function filterBouquetColor($color): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
         LEFT JOIN images ON products.id=images.Products_idProducts 
         WHERE color = :color AND category = 'bouquet'");
+        $statement->bindValue(':color', $color);
+        $statement->execute();
+        $productFilter = $statement->fetchAll();
+        return $productFilter;
+    }
+
+    public function filterFlowerColor($color): array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " 
+        LEFT JOIN images ON products.id=images.Products_idProducts 
+        WHERE color = :color AND category = 'fleur coupée'");
         $statement->bindValue(':color', $color);
         $statement->execute();
         $productFilter = $statement->fetchAll();

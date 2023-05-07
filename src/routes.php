@@ -30,5 +30,5 @@ return [
     'order/deleteOrder' => ['OrderController', 'deleteOrder',],
     'adminOrder' => ['OrderController', 'adminOrder',],
     'userOrder' => ['OrderController', 'userOrder',],
-    'flower' => ['FlowerController', 'flower',],
+    'flower' => ['FlowerController', 'flowers',],
 ];
