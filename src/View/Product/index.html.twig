@@ -9,12 +9,13 @@
 {% endblock navbar %}
 
 {% block content %}
+</br>
 	<h2>Catalogue</h2>
 
 	<table class="table align-middle mb-0 bg-white">
 
 		<thead class="bg-light">
-			<tr>
+			<tr class="text-center">
 				<th>Image</th>
 				<th>Id</th>
 				<th>Nom</th>
@@ -37,9 +38,9 @@
 		</thead>
 
 		<tbody>
-			<tr>
+			<tr >
 				{% for image in images %}
-					<tr>
+					<tr class="text-center">
 						<td>
 							<div class="d-flex align-items-center">
 								<img src="\{{ image.filename }}" alt="flower" style="width: auto; height: 200px">
@@ -69,7 +70,7 @@
 								<span class="badge badge-warning rounded-pill d-inline">Rupture</span>
 							</td>
 						{% endif %}
-
+			
 						<td class="fw-normal mb-1">{{ image.price }}€</td>
 						<td>
 							<a href="/products/show?id={{ image.Products_idProducts }}">
@@ -81,45 +82,37 @@
 
 						{# Displays image when product isTrending is set to  #}
 
-						{% if image.isTrending == 0 %}
-							<td>
-								<form action="/products/trending" method="POST">
-									<input type="hidden" name="id" value="{{ image.Products_idProducts }}">
-									<button type="submit" class="btn btn-primary btn-floating">
-										<i class="far fa-star"></i>
-									</button>
-								</form>
-							</td>
-						{% endif %}
-						{% if image.isTrending == 1 %}
-							<td>
-								<button type="button" class="btn btn-primary btn-floating" data-mdb-container="body" data-mdb-toggle="popover" data-mdb-placement="top" data-mdb-content="Le produit a déjà été ajouté en vedette">
-									<i class="fas fa-star"></i>
-								</button>
-							</td>
-						{% endif %}
 						<td>
-							<a href="/products/edit?id={{ image.Products_idProducts }}">
-								<button type="button" class="btn btn-primary btn-floating">
-									<i class="fas fa-pencil"></i>
-								</button>
-							</a>
-						</td>
-						<td>
-							<form action="/products/delete" method="POST">
+							<form action="/products/trending" method="POST">
 								<input type="hidden" name="id" value="{{ image.Products_idProducts }}">
 								<button type="submit" class="btn btn-primary btn-floating">
-									<i class="fas fa-trash-can"></i>
+									{% if image.isTrending == 0 %}
+										<i class="far fa-star"></i>
+									{% else %}
+										<i class="fas fa-star"></i>
+									{% endif %}
 								</button>
 							</form>
 						</td>
-					</tr>
-				</tbody>
-			{% else %}
-				<li>Nothing to display</li>
-			{% endfor %}
+						<td>
+						<a href="/products/edit?id={{ image.Products_idProducts }}">
+							<button type="button" class="btn btn-primary btn-floating">
+								<i class="fas fa-pencil"></i>
+							</button>
+						</a>
+						</td>
+				
+					<td>
+					<form action="/products/delete" method="POST">
+						<input type="hidden" name="id" value="{{ image.Products_idProducts }}">
+						<button type="submit" class="btn btn-primary btn-floating">
+							<i class="fas fa-trash-can"></i>
+						</button>
+					</form>
+					</td>
+			</tr>
 		</tbody>
-	</ul>
-{% endblock %}
-
-{% block footer %}{% endblock footer %}
+	{% else %}
+		<li>Nothing to display</li>
+	{% endfor %}
+</tbody></ul>{% endblock %}{% block footer %}{% endblock footer %}

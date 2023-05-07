@@ -137,9 +137,16 @@ class ProductController extends AbstractController
     public function trending(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
+            $id = $_POST['id'];
             $productManager = new ProductManager();
-            $productManager->addTrending((int)$id);
+            $product = $productManager->selectOneById($id);
+
+            // Checks if product has already been added to homepage
+            if ($product['isTrending']) {
+                $productManager->removeTrending((int)$id);
+            } else {
+                $productManager->addTrending((int)$id);
+            }
             header('Location:/products');
         }
     }

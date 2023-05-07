@@ -104,4 +104,15 @@ class ProductManager extends AbstractManager
 
         $statement->execute();
     }
+
+     // Changes product with chosen id "isTrending" value to 0
+    public function removeTrending(int $id): void
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " INNER JOIN 
+         images ON products.id=images.Products_idProducts SET isTrending = 0 WHERE products.id=:id");
+
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        $statement->execute();
+    }
 }
