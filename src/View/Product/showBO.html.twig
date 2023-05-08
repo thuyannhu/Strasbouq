@@ -4,11 +4,12 @@
 	<link rel="stylesheet" href="/assets/css/productshow.css">
 {% endblock %}
 
+{% block navbar %}
+	{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
 {% block content %}
 	{% include '/Product/_showSheet.html.twig' %}
-	<a href="/?add_to_cart={{product[0].Products_idProducts }}" class="btn btn-primary btn-lg">
-	Ajouter au panier
-	</a>
-	</div>
-	</section>
 {% endblock %}
+
+{% block footer %}{% endblock footer %}
