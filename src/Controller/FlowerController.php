@@ -29,7 +29,7 @@ class FlowerController extends AbstractController
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
-        
+
         $imageController = new ImageController();
         if ($resultFilter) {
             $flowers = $resultFilter;

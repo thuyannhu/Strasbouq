@@ -56,7 +56,7 @@ class BouquetsController extends AbstractController
         $resultFilter = $this->filterBouquet();
         $bouquets = [];
         $imageController = new ImageController();
-        
+
         if ($resultFilter) {
             $bouquets = $resultFilter;
         } else {

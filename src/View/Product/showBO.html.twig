@@ -4,12 +4,12 @@
 	<link rel="stylesheet" href="/assets/css/productshow.css">
 {% endblock %}
 
+{% block navbar %}
+	{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
 {% block content %}
-	<div class="pt-5">
-		<h6 class="mb-0">
-			<a href="/" class="text-body">
-				<i class="fas fa-long-arrow-alt-left me-2"></i>Retour</a>
-		</h6>
-	</div>
 	{% include '/Product/_showSheet.html.twig' %}
 {% endblock %}
+
+{% block footer %}{% endblock footer %}
