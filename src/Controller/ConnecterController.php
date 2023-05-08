@@ -149,6 +149,7 @@ class ConnecterController extends AbstractController
                     $this->insertDataIntoDB();
                     $message = ["Bravo! Votre inscription a réussi."];
                     $alert = 'success';
+                    $_SESSION['user'] = $_POST["email"];
                     header('Location: /monCompte');
                     exit;
                 } else {
