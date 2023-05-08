@@ -8,9 +8,8 @@ class OrderManager extends AbstractManager
 {
     public const TABLE = 'order';
 
-    public function insertOrder($userMail, $price)
+    public function insertOrder($orderNumber, $userMail, $price)
     {
-        $orderNumber = uniqid();
         $date = date("Y-m-d H:i");
         $status = "En cours";
 
@@ -79,5 +78,11 @@ class OrderManager extends AbstractManager
         $statement = $this->pdo->prepare("DELETE FROM `" . self::TABLE . "` WHERE id=:id");
         $statement->bindValue(':id', $id);
         $statement->execute();
+    }
+
+    public function getLastInsertedOrderNumber()
+    {
+        $statement = $this->pdo->query("SELECT MAX(orderNumber) FROM `" . self::TABLE . "`");
+        return $statement->fetchColumn();
     }
 }

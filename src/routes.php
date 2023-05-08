@@ -13,6 +13,7 @@ return [
     'products' => ['ProductController', 'index',],
     'products/edit' => ['ProductController', 'edit', ['id']],
     'products/show' => ['ProductController', 'show', ['id']],
+    'products/show_BO' => ['ProductController', 'showBO', ['id']],
     'products/add' => ['ProductController', 'add',],
     'products/delete' => ['ProductController', 'delete',],
     'products/trending' => ['ProductController', 'trending',],

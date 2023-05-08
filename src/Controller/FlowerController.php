@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\CatalogManager;
 use App\Controller\BouquetsController;
 use App\Controller\CartController;
+use App\Controller\ImageController;
 
 class FlowerController extends AbstractController
 {
@@ -29,11 +30,13 @@ class FlowerController extends AbstractController
             $_SESSION['cart'] = [];
         }
 
+        $imageController = new ImageController();
         if ($resultFilter) {
             $flowers = $resultFilter;
         } else {
             $flowers = $catalogManager->showFlowers();
         }
+        $flowers = $imageController->imageDuplicate($flowers);
 
         if (isset($_GET['add_to_cart'])) {
             $bouquetsController = new BouquetsController();

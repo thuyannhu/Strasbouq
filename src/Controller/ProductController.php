@@ -30,7 +30,7 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/index.html.twig', ['images' => $newImage]);
     }
 
-    // Displays product with chosen $id with all images
+    // Displays product with chosen $id with all images for clients
     public function show(int $id): string
     {
         // Selects chosen product data
@@ -53,6 +53,23 @@ class ProductController extends AbstractController
 
         return $this->twig->render(
             'Product/show.html.twig',
+            ['product' => $productImage, 'images' => $images, 'id' => $id]
+        );
+    }
+
+    // Displays product with chosen $id with all images in back office
+    public function showBO(int $id): string
+    {
+        // Selects chosen product data
+        $productManager = new ProductManager();
+        $productImage = $productManager->selectOneByIdByImages($id);
+
+        // Selects chosen product image data
+        $imageManager = new ImageManager();
+        $images = $imageManager ->selectImages($id);
+
+        return $this->twig->render(
+            'Product/showBO.html.twig',
             ['product' => $productImage, 'images' => $images, 'id' => $id]
         );
     }
@@ -109,7 +126,7 @@ class ProductController extends AbstractController
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
 
-                header('Location: /products/show?id=' . $id);
+                header('Location: /products/show_BO?id=' . $id);
                 return null;
             } else {
                 $message = $this->addErrorsToMessage($errors, $message);
