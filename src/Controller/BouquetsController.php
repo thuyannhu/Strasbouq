@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CatalogManager;
+use App\Controller\ImageController;
 
 class BouquetsController extends AbstractController
 {
@@ -58,6 +59,8 @@ class BouquetsController extends AbstractController
             $bouquets = $resultFilter;
         } else {
             $bouquets = $catalogManager->showBouquets();
+            $imageController = new ImageController();
+            $bouquets = $imageController->imageDuplicate($bouquets);;
         }
 
         if (isset($_GET['add_to_cart'])) {

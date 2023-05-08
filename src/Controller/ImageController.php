@@ -30,4 +30,22 @@ class ImageController extends AbstractController
             }
         } return $this->twig->render('Product/add.html.twig');
     }
+
+    // Checks if product image id is the same as the precedent one to avoid duplicate image
+    public function imageDuplicate($productImage)
+    {
+        $newImage = [];
+        $precedent = 0;
+
+        foreach ($productImage as $image) 
+        {
+            if ($image['Products_idProducts'] != $precedent) 
+            {
+                $newImage[] = $image;
+            }
+            $precedent = $image['Products_idProducts'];
+        }
+
+        return $newImage;
+    }
 }
