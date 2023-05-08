@@ -74,6 +74,12 @@
         
     }
 }
+.uk-alert-success{
+    color: rgb(69, 243, 69);
+}
+.uk-alert-danger{
+    color: red;
+}
 
 
 
