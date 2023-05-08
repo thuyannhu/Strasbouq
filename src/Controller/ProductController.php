@@ -126,7 +126,7 @@ class ProductController extends AbstractController
                 $image = new ImageController();
                 $image->addImage($_FILES, $id);
 
-                header('Location: /products/show?id=' . $id);
+                header('Location: /products/show_BO?id=' . $id);
                 return null;
             } else {
                 $message = $this->addErrorsToMessage($errors, $message);
