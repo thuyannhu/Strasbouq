@@ -37,10 +37,8 @@ class ImageController extends AbstractController
         $newImage = [];
         $precedent = 0;
 
-        foreach ($productImage as $image) 
-        {
-            if ($image['Products_idProducts'] != $precedent) 
-            {
+        foreach ($productImage as $image) {
+            if ($image['Products_idProducts'] != $precedent) {
                 $newImage[] = $image;
             }
             $precedent = $image['Products_idProducts'];

@@ -17,8 +17,7 @@ class HomeController extends AbstractController
 
         // If icon is clicked, product is added to cart
         $bouquetsController = new BouquetsController();
-        if (isset($_GET['add_to_cart'])) 
-        {
+        if (isset($_GET['add_to_cart'])) {
             $bouquetsController->addToCart();
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
@@ -30,4 +29,3 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', ['images' => $newImage]);
     }
 }
-

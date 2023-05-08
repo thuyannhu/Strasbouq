@@ -55,13 +55,14 @@ class BouquetsController extends AbstractController
         $catalogManager = new CatalogManager();
         $resultFilter = $this->filterBouquet();
         $bouquets = [];
+        $imageController = new ImageController();
+        
         if ($resultFilter) {
             $bouquets = $resultFilter;
         } else {
             $bouquets = $catalogManager->showBouquets();
-            $imageController = new ImageController();
-            $bouquets = $imageController->imageDuplicate($bouquets);;
         }
+        $bouquets = $imageController->imageDuplicate($bouquets);
 
         if (isset($_GET['add_to_cart'])) {
             $this->addToCart();
