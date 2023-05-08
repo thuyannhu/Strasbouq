@@ -8,10 +8,29 @@
 {% block content %}
 	<main>
 		{% set total = 0 %}
+		<h1 class="text-center my-5">Composez votre bouquet</h1>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-8 flowerContainer">
 					<h2>Nos fleurs</h2>
+					<form action="" method="POST">
+						<div class="row justify-content-center" id="filter-sort-example-filters" data-mdb-auto-filter="true">
+							<div class="my-5 filterBox">
+								<select class="form-control filter" id="color" name="color">
+									<option value="" disabled selected>Couleur</option>
+									<option value="rouge">rouge</option>
+									<option value="orange">orange</option>
+									<option value="jaune">jaune</option>
+									<option value="vert">vert</option>
+									<option value="bleu">bleu</option>
+									<option value="violet">violet</option>
+									<option value="blanc">blanc</option>
+								</select>
+								<button type="submit" class="btn btn-primary">Trier</button>
+							</div>
+						</div>
+						<div class="row text-center" id="filter-sort-example-data"></div>
+					</form>
 					<div class="row">
 						{% for flower in flowers %}
 							<div class="col-md-4 mb-3">
@@ -39,14 +58,14 @@
 						{% endfor %}
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 cartContainer">
 					<h2>Panier</h2>
-					<ul class="list-group">
+					<ul class="list-group cartList">
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							<span>Article</span>
 							<span>Quantité</span>
 							<span>Prix</span>
-							<span>Suppr</span>
+							<span></span>
 						</li>
 					</li>
 					{% for item in cart %}
