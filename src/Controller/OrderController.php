@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\OrderManager;
+use App\Service\Mail;
 
 class OrderController extends AbstractController
 {
@@ -13,7 +14,17 @@ class OrderController extends AbstractController
             $price = $_POST['price'];
             $orderManager = new OrderManager();
 
-            $orderManager->insertOrder($userMail, $price);
+            $orderNumber = uniqid();
+            $orderManager->insertOrder($orderNumber, $userMail, $price);
+
+            // envoi d'un mail à l'admin
+            $mail = new Mail();
+            $orderNumber = $orderManager->getLastInsertedOrderNumber();
+            $products = "";
+            foreach ($_SESSION['cart'] as $product) {
+                $products .= "- " . $product['name'] . " x " . $product['quantity'] . "<br>";
+            }
+            $mail->mailOrder($orderNumber, $products);
 
             header('Location: /userOrder');
             exit;
