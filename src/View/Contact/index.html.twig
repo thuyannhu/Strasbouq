@@ -11,8 +11,16 @@
         <h1 class="titre">Contactez-nous</h1>
         <div class="contactez-nous">
             <br>
-            <p>Un problème?, envie de nous poser une question ?</p>
-            <form action="/page-traitement-donnees" method="post">
+            {% if retour != "" %}
+                {% if retour == true %}
+                    <p class="uk-alert-success">Votre message a bien été transmis.</p>
+                {% else %}
+                    <p class="uk-alert-danger">Une erreur est survenue.</p>
+                {% endif %}
+            {% else %}
+                <p>Un problème?, envie de nous poser une question ?</p>
+            {% endif %}
+            <form method="post">
             <div>
                 <label for="nom">Votre nom</label>
                 <input type="text" id="nom" name="nom" placeholder="" required>
@@ -25,10 +33,10 @@
                 <label for="sujet">Quel est le sujet de votre message ?</label>
                 <select name="sujet" id="sujet" required>
                     <option value="" disabled selected hidden></option>
-                    <option value="probleme-compte">Problème avec mon compte</option>
-                    <option value="question-produit">Question à propos d’un produit</option>
-                    <option value="suivi-commande">Suivi de ma commande</option>
-                    <option value="autre">Autre...</option>
+                    <option value="Probleme compte">Problème avec mon compte</option>
+                    <option value="Question produit">Question à propos d’un produit</option>
+                    <option value="Suivi commande">Suivi de ma commande</option>
+                    <option value="Autre demande">Autre...</option>
                 </select>
             </div>
             <div>

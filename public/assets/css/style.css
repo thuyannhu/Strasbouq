@@ -1,5 +1,4 @@
 
-
 .rounded-circle{
     height: 30px !important;
     width: 30px !important;
@@ -74,6 +73,12 @@
         padding-right: 30px;
         
     }
+}
+.uk-alert-success{
+    color: rgb(69, 243, 69);
+}
+.uk-alert-danger{
+    color: red;
 }
 
 

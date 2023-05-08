@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/productshow.css">
+{% endblock %}
+
+{% block navbar %}
+	{% include '/component/_navbarAdmin.html.twig' %}
+{% endblock navbar %}
+
+{% block content %}
+	{% include '/Product/_showSheet.html.twig' %}
+{% endblock %}
+
+{% block footer %}{% endblock footer %}

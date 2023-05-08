@@ -4,6 +4,29 @@ header,
 .view {
   height: 100%;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.cardTitle {
+  font-size: 1,5rem;
+  margin-top: 5%;
+}
+
+.cardImage {
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.cartCard {
+  margin-left: 50%;
+}
+
+.cardPrice {
+  margin-top: 20%;
+  font-size: 1.5rem;
+}
 
 @media (max-width: 740px) {
   html,

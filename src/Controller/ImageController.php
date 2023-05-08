@@ -7,22 +7,6 @@ use App\Service\Image;
 
 class ImageController extends AbstractController
 {
-    public function index(): string
-    {
-        $imageManager = new ImageManager();
-        $images = $imageManager->selectAll('name');
-
-        return $this->twig->render('Product/index.html.twig', ['images' => $images]);
-    }
-
-    public function showImage(int $id): string
-    {
-        $imageManager = new ImageManager();
-        $image = $imageManager->selectOneById($id);
-
-        return $this->twig->render('Product/show.html.twig', ['image' => $image]);
-    }
-
     public function addImage($image, $productId): ?string
     {
         $authorizedExtensions = ['jpg','jpeg','png'];
@@ -45,5 +29,21 @@ class ImageController extends AbstractController
                 return null;
             }
         } return $this->twig->render('Product/add.html.twig');
+    }
+
+    // Checks if product image id is the same as the precedent one to avoid duplicate image
+    public function imageDuplicate($productImage)
+    {
+        $newImage = [];
+        $precedent = 0;
+
+        foreach ($productImage as $image) {
+            if ($image['Products_idProducts'] != $precedent) {
+                $newImage[] = $image;
+            }
+            $precedent = $image['Products_idProducts'];
+        }
+
+        return $newImage;
     }
 }
