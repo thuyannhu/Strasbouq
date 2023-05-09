@@ -17,6 +17,7 @@
     <rule ref="rulesets/design.xml" >
         <exclude name="CouplingBetweenObjects" />
         <exclude name="ExitExpression" />
+        <exclude name="NumberOfChildren" />
     </rule>
     <rule ref="rulesets/design.xml/CouplingBetweenObjects">
         <properties>
@@ -31,7 +32,11 @@
             <property name="exceptions" value="id,db" />
         </properties>
     </rule>
-    <rule ref="rulesets/unusedcode.xml" />
+    <rule ref="rulesets/design.xml/NumberOfChildren">
+        <properties>
+            <property name="minimum" value="20"/>
+        </properties>
+    </rule>
 
     <exclude-pattern>src/Migrations</exclude-pattern>
 </ruleset>

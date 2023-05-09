@@ -1,0 +1,33 @@
+main
+{
+    backdrop-filter: blur(15px);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/fleur-thanks.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.block
+{
+    background-color: rgba(255, 255, 255, 0.854);
+    padding: 30px;
+    width: 80vw;
+    height: 50vh;
+    border-radius: 15px;
+    border: solid silver;
+    box-shadow: auto;
+
+}
+p
+{
+    padding: 30px;
+    text-align: center;
+    font-stretch: narrower;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}

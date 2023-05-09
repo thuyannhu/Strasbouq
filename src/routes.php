@@ -20,6 +20,7 @@ return [
     'userpage' => ['UserpageController', 'userpage',],
     'connecter' => ['ConnecterController', 'connect',],
     'devis' => ['DevisController', 'devis',],
+    'thanks' => ['ThanksController', 'thanks',],
     'admin' => ['AdminController', 'admin',],
     'monCompte' => ['CompteController', 'moncompte',],
     'cart' => ['CartController', 'cart',],
