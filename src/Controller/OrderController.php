@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\OrderManager;
+use App\Service\Mail;
+use App\Model\UserManager;
 
 class OrderController extends AbstractController
 {
@@ -13,7 +15,17 @@ class OrderController extends AbstractController
             $price = $_POST['price'];
             $orderManager = new OrderManager();
 
-            $orderManager->insertOrder($userMail, $price);
+            $orderNumber = uniqid();
+            $orderManager->insertOrder($orderNumber, $userMail, $price);
+
+            // envoi d'un mail à l'admin
+            $mail = new Mail();
+            $orderNumber = $orderManager->getLastInsertedOrderNumber();
+            $products = "";
+            foreach ($_SESSION['cart'] as $product) {
+                $products .= "- " . $product['name'] . " x " . $product['quantity'] . "<br>";
+            }
+            $mail->mailOrder($orderNumber, $products);
 
             header('Location: /userOrder');
             exit;
@@ -27,6 +39,22 @@ class OrderController extends AbstractController
             $status = $_POST['status'];
             $orderManager = new OrderManager();
             $orderManager->updateOrderStatus($id, $status);
+
+            if ($_POST['status'] == "terminé") {
+                $userMail = "";
+                $prix = 0;
+                $orders = $orderManager->showAllOrder();
+                foreach ($orders as $order) {
+                    if ($order['id'] == $id) {
+                        $prix = $order['price'];
+                        $userMail = $order['mail'];
+                    }
+                }
+                $userManager = new UserManager();
+                $fidelity = $userManager->searchUser($userMail, "fidelity");
+                $ide = $userManager->searchUser($userMail, "id");
+                $userManager->modifyUser("fidelity", $fidelity + $prix, $ide);
+            }
             header('Location: /adminOrder');
             exit;
         }
