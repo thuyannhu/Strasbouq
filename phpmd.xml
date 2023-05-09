@@ -33,11 +33,10 @@
         </properties>
     </rule>
     <rule ref="rulesets/design.xml/NumberOfChildren">
-    <properties>
-        <property name="maximun" value="20"/>
-    </properties>
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
     </rule>
-    <rule ref="rulesets/unusedcode.xml" />
 
     <exclude-pattern>src/Migrations</exclude-pattern>
 </ruleset>
