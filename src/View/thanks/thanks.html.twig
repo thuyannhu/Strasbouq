@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/thanks.css">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="block">
+            <h1>Votre demande :</h1>
+            <p>{{ message }}</p>
+        </div>
+        <form action="/" method= "POST">
+        <button type="submit">page d'accueil</button>
+        </form>
+    </main>
+{% endblock %}
