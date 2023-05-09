@@ -14,7 +14,7 @@ class ContactController extends AbstractController
             $retour = $mailService->envoiMail(
                 $_POST['nom'],
                 $_POST['email'],
-                "seeboutiqueonline@gmail.com",
+                "nhu.thuy.an@gmail.com",
                 'Service client',
                 $_POST['email'] . " - " . $_POST['sujet'],
                 $_POST['message']
