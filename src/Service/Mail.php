@@ -35,7 +35,7 @@ class Mail
 
     public function mailOrder($orderNumber, $products)
     {
-        $adminMail = "benjyzilliox@hotmail.com";
+        $adminMail = "benjaminzilliox@gmail.com";
         $subject = "Commande n° " . $orderNumber;
         $message = "Bonjour, une nouvelle commande est arrivée. 
                     Vous pouvez la consulter sur la page de gestion de commande.<br>";
