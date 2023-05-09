@@ -10,21 +10,39 @@
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
-    border-bottom: solid 4px rgb(176, 193, 176);
     width: 100vw;
     padding-right: 3vw;
+    border-bottom: 4px solid rgb(176,193,176);
     background-color:#fffdf4;
 }
 
+.link{
+color: #acb79d;
+font-size: 1.2rem;
+}
+
+
+.link:hover{
+    color: #88907d;
+    }
+
 .item-shop{
-    border: solid 1px black;
-    border-radius: 100%;
     width: 35px;
     height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-right: 2px;
+    font-size: 2rem;
+    
+}
+
+.icon{
+    color: #acb79d; 
+}
+
+.icon:hover{
+    color: #88907d; 
 }
 
 #nav-burger{
