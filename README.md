@@ -1,80 +1,48 @@
-# Simple MVC
+# Strasbouq, site de e-commerce en click-and-collect  :cherry_blossom: :bouquet:
+Strasbouq est un site en PHP, Twig et CSS sur une achitecture MVC.
 
-## Description
+## Contexte de développement
+Ce site a été créé lors de mes premiers mois d'appprentissage du développement web dans le cadre de la formation Développeur Web de la Wild Code School. Le travail a été fait avec trois autres camarades. L'objectif était de créer le site d'un fleuriste avec un front-office sur lequel les clients ont la possibilité de réserver un bouquet et un back office dans lequel le fleuriste peut gérer son catalogue de bouquet, son cahier de commandes et les données clients. 
 
-This repository is a simple PHP MVC structure from scratch.
 
-It uses some cool vendors/libraries such as Twig and Grumphp.
-For this one, just a simple example where users can choose one of their databases and see tables in it.
+## Contributions
+J'ai travaillé principalement sur:
+- La gestion du projet sur Trello
+- La création du wireframe sur Figma
+- La page d'accueil
+- Le thème visuel (couleurs, polices et logo)
+- L'affichage du catalogue de bouquets en front office et la gestion des bouquets en back-office
+- Le diapo de présentation du projet
 
-## Steps
+## Technologies
+PHP
+Twig
+CSS
 
-1. Clone the repo from Github.
-2. Run `composer install`.
-3. Create _config/db.php_ from _config/db.php.dist_ file and add your DB parameters. Don't delete the _.dist_ file, it must be kept.
+## Captures d'écran
 
-```php
-define('APP_DB_HOST', 'your_db_host');
-define('APP_DB_NAME', 'your_db_name');
-define('APP_DB_USER', 'your_db_user_wich_is_not_root');
-define('APP_DB_PASSWORD', 'your_db_password');
-```
+### FRONT OFFICE
 
-4. Import _database.sql_ in your SQL server, you can do it manually or use the _migration.php_ script which will import a _database.sql_ file.
-5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
-6. Go to `localhost:8000` with your favorite browser.
-7. From this starter kit, create your own web application.
+La page d'accueil :
 
-### Windows Users
+![image](https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcg0Y4ODwnEJ44k6DLNeFWUPyFgd2d9ArnRQdYmKxk1qPiejmeEn9KXs-RFD--MhQ_6naYDdObw5BmbSp-wpdEkLWVSMAMUpAAsoFIeFDx4pvVzpkvHslkndPuFN0QtKs6wviF2M9mbB31-io4gE0dcJlXrQJxe=w3840-h1918?key=ch3XMD8xWdiBuyoH12_P8Yjq)
 
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
+Une fiche produit :
 
-`git config --global core.autocrlf true`
+![image](https://lh7-rt.googleusercontent.com/slidesz/AGV_vUdvp2fsgXfyVjowak1NvWBjkyJbQTkBOQQiNwtRb25aDQQu6MsxZRP5Iqo5Undw-02b8Kn8F0y0bE-__EgmhCCGWXGLErMxE25sKnt49b5CvnEz1ztHlMeb_SwD3GLOR6Ut1IhjSIvNlchlEfOZBqP11Q1tkiA=w3840-h1918?key=ch3XMD8xWdiBuyoH12_P8Yjq)
 
-## Example
+### BACK OFFICE
 
-An example (a basic list of items) is provided (you can load the _simple-mvc.sql_ file in a test database). The accessible URLs are :
+La gestion du catalogue de produits :
 
--   Home page at [localhost:8000/](localhost:8000/)
--   Items list at [localhost:8000/items](localhost:8000/items)
--   Item details [localhost:8000/items/show?id=:id](localhost:8000/item/show?id=2)
--   Item edit [localhost:8000/items/edit?id=:id](localhost:8000/items/edit?id=2)
--   Item add [localhost:8000/items/add](localhost:8000/items/add)
--   Item deletion [localhost:8000/items/delete?id=:id](localhost:8000/items/delete?id=2)
+![image](https://lh7-rt.googleusercontent.com/slidesz/AGV_vUfU5RuN3OFKE7Rcj9FXxhph4PhYLEfpviqatI1irQ03zOzEfa9gTAEuTNQvOH4SSR8w3NMiJUHDqtknAaKNRNLemntcSv0zxJ788-HwqX-SsYG64OdIuipC_vb5wQrdALZNb51-51yfOj9xHZ2vyVbJ2XDXn1M=w3840-h1918?key=ch3XMD8xWdiBuyoH12_P8Yjq)
 
-You can find all these routes declared in the file `src/routes.php`. This is the very same file where you'll add your own new routes to the application.
+L'édition d'une fiche produit :
 
-## How does URL routing work ?
+![image](https://lh7-rt.googleusercontent.com/slidesz/AGV_vUd1IEe7Fn6jOX3IUFZ6rux3i7HnQi3pTFiw7taRuJZztN9Utoo1fP5dBXivMWAZoXMkmYXD1Te83YJvu2Dv-Xr9o0IeL1rpbWITrrtDG7WJlkAvqaxk5ZkkP2ApZYrquSeXRvTVSL7t_QzF5wXUrJgU3RWkfbsM=w3840-h1918?key=ch3XMD8xWdiBuyoH12_P8Yjq)
 
-![simple_MVC.png](.tours/simple_MVC.png)
+## Annexe
 
-## Ask for a tour !
+Wireframe : [front office et back office](https://www.figma.com/proto/2ooQalw0XlrPHS1C9MmLzJ/Projet-2-%3A-StrasBouq?node-id=0-1&t=Eerz1ZjXM5Y8VMO3-1)
 
-<img src="./.tours/photo-1632178151697-fd971baa906f.jpg" alt="Guided tour" width="150"/>
-
-We prepare a little guided tour to start with the simple-MVC.
-
-To take it, you need to install the `Code Tour` extension for Visual Studio Code : [Code Tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-
-It will give access to a new menu on your IDE where you'll find the different tours about the simple-MVC. Click on play to start one :
-
-![menu](.tours/code_tour_menu.png)
-
-## Run it on docker
-
-If you don't know what is docker, skip this chapter. ;)
-
-Otherwise, you probably see, this project is ready to use with docker.
-
-To build the image, go into the project directory and in your CLI type:
-
-```
-docker build -t simple-mvc-container .
-```
-
-then, run it to open it on your localhot :
-
-```
-docker run -i -t --name simple-mvc  -p 80:80 simple-mvc-container
-```
-# projet2
+Présentation du projet : [slides](https://docs.google.com/presentation/d/1BUDD7ChdidBTdSVq1gKGr3nymmO0kp0ysRYUgZ7Zhsc/edit#slide=id.g24173572e04_0_24)
